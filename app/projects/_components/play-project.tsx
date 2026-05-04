@@ -2,11 +2,14 @@ import { SteamIcon } from "@/components/brand-icons"
 import { NavigationButton } from "@/components/nav-button"
 import { SectionTitle } from "@/components/section-title"
 import type { ReactNode } from "react"
+import type {
+  EmbeddedDemo,
+  DownloadDemo as DownloadDemoProps,
+  LocalDownload as LocalDownloadProps,
+  SteamDownload as SteamDownloadProps,
+} from "../_context/project-context"
 
-type EmbeddedDemoProps = { type: "embed"; children: ReactNode } & Omit<LocalDownloadProps, "steamLink">
-type DownloadDemoProps = { type: "download" } & (LocalDownloadProps | SteamDownloadProps)
-type SteamDownloadProps = { steamLink: string; githubLink?: never; downloadLink?: never }
-type LocalDownloadProps = { githubLink: string; downloadLink: string; steamLink?: never }
+type EmbeddedDemoProps = EmbeddedDemo & { children: ReactNode }
 
 export type PlayProjectProps = EmbeddedDemoProps | DownloadDemoProps
 export function PlayProject(props: PlayProjectProps) {
