@@ -11,7 +11,7 @@ export interface ShowcasePieceProps {
 export function ShowcasePiece({ title, descriptions, id, img }: ShowcasePieceProps) {
   return (
     <Link href={`/projects/${id}`}>
-      <article className="flex gap-4 rounded-md p-6 outline-primary hover:outline-3">
+      <article className="flex flex-col items-center justify-center gap-4 rounded-md p-6 outline-primary hover:outline-3 sm:flex-row">
         <Image
           className="object-contain"
           unoptimized
