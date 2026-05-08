@@ -5,7 +5,13 @@ import { Project } from "../_components/project-wrapper"
 import { PdfViewer } from "@/components/pdf-viewing/pdf-viewer-lazy"
 import { SectionTitle } from "@/components/section-title"
 import { ProjectFooter } from "../_components/project-footer"
-import Link from "next/link"
+import {
+  ProjectRole,
+  ProjectRoleHeader,
+  ProjectRoleResponsibilities as Responsibilities,
+  ProjectRoleResponsibility as Responsibility,
+  ProjectRoles,
+} from "../_components/project-roles"
 
 export const metadata = getProjectMetdata("speedrun-shopping")
 
@@ -30,6 +36,34 @@ export default function SpeedrunShoppingPage() {
       <PlayProject type="embed" downloadLink="" githubLink="https://github.com/geekguy100/CIS497_ComedyGame">
         <iframe src="https://itch.io/embed-upload/3535053?color=333333" width="1000" height="820" />
       </PlayProject>
+      <ProjectRoles>
+        <ProjectRole>
+          <ProjectRoleHeader className="no-underline">Project Lead / Producer</ProjectRoleHeader>
+        </ProjectRole>
+        <ProjectRole>
+          <ProjectRoleHeader className="no-underline">Programming Lead</ProjectRoleHeader>
+        </ProjectRole>
+        <ProjectRole>
+          <ProjectRoleHeader>Core Gameplay Programming</ProjectRoleHeader>
+          <Responsibilities>
+            <Responsibility>
+              Responsible for enemy AI
+              <Responsibilities>
+                <Responsibility>Founded on the state pattern</Responsibility>
+              </Responsibilities>
+            </Responsibility>
+            <Responsibility>Interaction system</Responsibility>
+            <Responsibility>Shopping list behavior</Responsibility>
+            <Responsibility>Core gameplay loop</Responsibility>
+          </Responsibilities>
+        </ProjectRole>
+        <ProjectRole>
+          <ProjectRoleHeader>Documentation</ProjectRoleHeader>
+          <Responsibilities>
+            <Responsibility>Multiple UML diagrams modelling design pattern incorporation</Responsibility>
+          </Responsibilities>
+        </ProjectRole>
+      </ProjectRoles>
       <article>
         <SectionTitle>Design Documentation</SectionTitle>
         <PdfViewer
