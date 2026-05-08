@@ -16,7 +16,11 @@ export function ProjectRole({ children }: PropsWithChildren) {
 }
 
 export function ProjectRoleHeader({ className, children, ...props }: ComponentPropsWithoutRef<"h3">) {
-  return <h4 className={cn("underline", className)}>{children}</h4>
+  return (
+    <h4 className={cn("underline", className)} {...props}>
+      {children}
+    </h4>
+  )
 }
 
 export function ProjectRoleResponsibilities({ className, ...props }: ComponentPropsWithoutRef<"ul">) {
