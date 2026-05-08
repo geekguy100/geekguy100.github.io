@@ -36,6 +36,15 @@
       ],
       "img": "/powerful-decisions.gif",
       "id": "powerful-decisions"
+    },
+    {
+      "title": "A Drop of Life",
+      "descriptions": [
+        "A rapidly developed prototype made in around three weeks. Play as a droplet of water, shape shifting through the various states of matter to explore the environment and water the dying flowers.",
+        "Created for IM 388 - Game Design II to develop prototypes that may be expanded upon in later years."
+      ],
+      "img": "/drop-of-life.gif",
+      "id": "drop-of-life"
     }
   ]
 }
