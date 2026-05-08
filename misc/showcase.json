@@ -7,8 +7,80 @@
         "Created for IM 459 - Game Design Capstone to expand upon a pre-existing prototype.",
         "Released on Steam."
       ],
-      "href": "/projects/disastergolf",
-      "img": "/dgolf.gif"
+      "img": "/dgolf.gif",
+      "id": "disastergolf"
+    },
+    {
+      "title": "Speedrun Shopping",
+      "descriptions": [
+        "A game created given the theme of 'comedy', Speedrun Shopping is a frantic, fast-paced shopping simulator. Ram into other shoppers, steal items you need from them, and try to fill out your shopping list as quickly as you can!",
+        "Created for CIS 497 - Unity Design Patterns for practice working with design patterns on a large-scale project."
+      ],
+      "img": "/speedrun-shopping.gif",
+      "id": "speedrun-shopping"
+    },
+    {
+      "title": "Shattered Shards",
+      "descriptions": [
+        "A rapidly developed prototype made in around four weeks. Explore an eerie, distorted, abandoned school for notes left by previous captives to figure out what happened and how you'll get out. Keep your eyes peeled for the monster lurking the halls.",
+        "Created for IM 488 - Capstone Prototyping to develop prototypes that may be expanded upon senior year."
+      ],
+      "img": "/shattered-shards.gif",
+      "id": "shattered-shards"
+    },
+    {
+      "title": "POWERful Decisions",
+      "descriptions": [
+        "A team-based educational game intended for companies to use to learn more about the smart grid electricity network.",
+        "Created on commission for the Peoria Park District."
+      ],
+      "img": "/powerful-decisions.gif",
+      "id": "powerful-decisions"
+    },
+    {
+      "title": "A Drop of Life",
+      "descriptions": [
+        "A rapidly developed prototype made in around three weeks. Play as a droplet of water, shape shifting through the various states of matter to explore the environment and water the dying flowers.",
+        "Created for IM 388 - Game Design II to develop prototypes that may be expanded upon in later years."
+      ],
+      "img": "/drop-of-life.gif",
+      "id": "drop-of-life"
+    },
+    {
+      "title": "Sundown Gundown",
+      "descriptions": [
+        "A rapidly developed prototype made in around four weeks. Play as a gunslinger seeking to rid the town of bandits. Hide behind cover to avoid incoming fire, and duel against a variety of enemies who seek to claim what's theirs. Features a stamina system to encourage tactical gameplay, strategy, and decision making.",
+        "Created for IM 488 - Capstone Prototyping to develop prototypes that may be expanded upon senior year."
+      ],
+      "img": "/sundown-gundown.gif",
+      "id": "sundown-gundown"
+    },
+    {
+      "title": "Mystery at the Murder Motel",
+      "descriptions": [
+        "A game where you play as a detective attempting to solve a mysterious murder. Features a complex dialogue system written in JSON, a journal that records clues collected throughout the game, and a custom interaction system created using the strategy pattern.",
+        "Created for CIS 497 - Unity Design Patterns for practice working with design patterns on a large-scale project."
+      ],
+      "img": "/mystery-motel.gif",
+      "id": "mystery-motel"
+    },
+    {
+      "title": "Project: Ball Barrage",
+      "descriptions": [
+        "A rapidly developed prototype made in around four weeks. Jump, dodge, and dash around an arena filled with dodgeballs to whip and targets to hit.",
+        "Created for IM 488 - Capstone Prototyping to develop prototypes that may be expanded upon senior year."
+      ],
+      "img": "/ball-barrage.gif",
+      "id": "ball-barrage"
+    },
+    {
+      "title": "Out of Service",
+      "descriptions": [
+        "A rapidly developed prototype made in around three weeks. Control the fates of a cast of wacky characters through a series of unorthodox encounters. ",
+        "Created for IM 388 - Game Design II to develop prototypes that may be expanded upon in later years."
+      ],
+      "img": "/out-of-service.gif",
+      "id": "out-of-service"
     }
   ]
 }
