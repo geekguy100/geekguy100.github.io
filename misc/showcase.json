@@ -63,6 +63,15 @@
       ],
       "img": "/mystery-motel.gif",
       "id": "mystery-motel"
+    },
+    {
+      "title": "Project: Ball Barrage",
+      "descriptions": [
+        "A rapidly developed prototype made in around four weeks. Jump, dodge, and dash around an arena filled with dodgeballs to whip and targets to hit.",
+        "Created for IM 488 - Capstone Prototyping to develop prototypes that may be expanded upon senior year."
+      ],
+      "img": "/ball-barrage.gif",
+      "id": "ball-barrage"
     }
   ]
 }
