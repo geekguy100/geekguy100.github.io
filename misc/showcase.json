@@ -27,6 +27,15 @@
       ],
       "img": "/shattered-shards.gif",
       "id": "shattered-shards"
+    },
+    {
+      "title": "POWERful Decisions",
+      "descriptions": [
+        "A team-based educational game intended for companies to use to learn more about the smart grid electricity network.",
+        "Created on commission for the Peoria Park District."
+      ],
+      "img": "/powerful-decisions.gif",
+      "id": "powerful-decisions"
     }
   ]
 }
