@@ -84,19 +84,7 @@ export default function ShatteredShards() {
           src="/horror_final_changes.pdf"
         />
       </article>
-      <ProjectFooter>
-        <p>
-          For a full list of documents, forms, assets, etc., please click{" "}
-          <Link
-            href="https://drive.google.com/drive/folders/1D6u7gq7-ZMg7tUY_IlXbfOdVSaPgalBy?usp=sharing"
-            target="_blank"
-            className="underline"
-          >
-            here
-          </Link>
-          .
-        </p>
-      </ProjectFooter>
+      <ProjectFooter href="https://drive.google.com/drive/folders/1D6u7gq7-ZMg7tUY_IlXbfOdVSaPgalBy?usp=sharing" />
     </Project>
   )
 }
