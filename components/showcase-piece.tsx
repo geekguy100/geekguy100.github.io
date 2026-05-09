@@ -15,6 +15,7 @@ export function ShowcasePiece({ title, descriptions, id, img }: ShowcasePiecePro
         <Image
           className="object-contain max-sm:mx-auto"
           unoptimized
+          loading="eager"
           src={img}
           width={300}
           height={160}
