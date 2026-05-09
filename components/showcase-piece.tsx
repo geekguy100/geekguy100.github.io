@@ -13,14 +13,14 @@ export function ShowcasePiece({ title, descriptions, id, img }: ShowcasePiecePro
     <Link href={`/projects/${id}`}>
       <article className="flex flex-col gap-4 rounded-md p-6 outline-primary hover:outline-3 sm:flex-row">
         <Image
-          className="mx-auto object-contain"
+          className="object-contain max-sm:mx-auto"
           unoptimized
           src={img}
           width={300}
           height={160}
           alt={`Thumbnail for content titled "${title}"`}
         />
-        <div className="flex flex-col">
+        <div>
           <h3 className="text-center sm:text-left">{title}</h3>
           {descriptions.map((desc, i) => (
             <p key={i}>{desc}</p>
