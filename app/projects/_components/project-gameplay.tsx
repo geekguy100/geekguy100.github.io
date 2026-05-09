@@ -71,11 +71,10 @@ function EmbeddedGameplay({ src, title }: ProjectGameplayProps["content"][number
     <iframe
       src={src}
       title={title}
-      width="1120"
-      height="630"
       allow="autoplay; clipboard-write; encrypted-media; web-share"
       referrerPolicy="strict-origin-when-cross-origin"
       allowFullScreen
+      className="aspect-video w-125 lg:w-200"
     />
   )
 }

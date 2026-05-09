@@ -13,6 +13,7 @@ import {
   ProjectRoles,
 } from "../_components/project-roles"
 import Link from "next/link"
+import { ProjectGameplay } from "../_components/project-gameplay"
 
 export const metadata = getProjectMetdata("out-of-service")
 
@@ -60,15 +61,13 @@ export default function OutOfServicePage() {
         <article>
           <h5>YouTube Playthrough</h5>
           <p className="italic">- Ya Pal Korin</p>
-          <iframe
-            width="560"
-            height="315"
-            src="https://www.youtube.com/embed/xTnpD2aEzd4?si=YW-rJ0xp11OhqxH4"
-            title="YouTube video player"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerPolicy="strict-origin-when-cross-origin"
-            allowFullScreen
-            className="mx-auto"
+          <ProjectGameplay
+            content={[
+              {
+                src: "https://www.youtube.com/embed/xTnpD2aEzd4?si=YW-rJ0xp11OhqxH4",
+                title: "Out of Service Playthrough",
+              },
+            ]}
           />
         </article>
       </article>
