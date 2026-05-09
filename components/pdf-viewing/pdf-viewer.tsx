@@ -43,7 +43,6 @@ export function _PdfViewer({ src, carouselProps, showPageNumber = false, canvasP
           setEmbla(api)
         }}
         {...carouselProps}
-        className={cn("", carouselProps?.className)}
       >
         <CarouselContent>
           {Array.from({ length: numPages }).map((_, i) => (
@@ -67,8 +66,16 @@ export function _PdfViewer({ src, carouselProps, showPageNumber = false, canvasP
 
         {numPages > 1 && (
           <>
-            <CarouselPrevious size="icon-lg" />
-            <CarouselNext size="icon-lg" />
+            {/* Mobile */}
+            <div className="relative block w-full sm:static sm:hidden sm:w-auto">
+              <CarouselPrevious size="icon-lg" className="left-0 sm:left-42" />
+              <CarouselNext size="icon-lg" className="right-0" />
+            </div>
+            {/* Desktop */}
+            <div className="hidden sm:block">
+              <CarouselPrevious size="icon-lg" />
+              <CarouselNext size="icon-lg" />
+            </div>
           </>
         )}
       </Carousel>
