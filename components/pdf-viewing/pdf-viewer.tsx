@@ -36,7 +36,7 @@ export function _PdfViewer({ src, carouselProps, showPageNumber = false, canvasP
   const numPages = pdf?.numPages ?? 0
 
   return (
-    <div className="mx-auto max-w-xl min-w-96">
+    <div className="mx-auto max-w-xl">
       <Carousel
         setApi={(api) => {
           if (!showPageNumber) return
