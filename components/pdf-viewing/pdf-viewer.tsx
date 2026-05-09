@@ -67,7 +67,7 @@ export function _PdfViewer({ src, carouselProps, showPageNumber = false, canvasP
         {numPages > 1 && (
           <>
             {/* Mobile */}
-            <div className="relative block w-full sm:static sm:hidden sm:w-auto">
+            <div className="relative mb-4 block w-full sm:static sm:hidden sm:w-auto">
               <CarouselPrevious size="icon-lg" className="left-0 sm:left-42" />
               <CarouselNext size="icon-lg" className="right-0" />
             </div>
