@@ -1,11 +1,11 @@
 "use client"
 import { ArticleWithIntro } from "@/components/section-with-intro"
 import { ProjectTabs, type Section } from "../_components/project-tabs"
-import { useCallback, useState } from "react"
+import { useCallback, useState, type ReactNode } from "react"
 
-const descriptions: Record<Section, string> = {
+const descriptions: Record<Section, ReactNode> = {
   university: "The projects I worked on during my time in university.",
-  aerospace: "Some of the projects I worked on during my time at The Aerospace Corporation.",
+  aerospace: <AerospaceDescriptionGrid />,
 }
 
 const DEFAULT_SECTION: Section = "university"
@@ -17,5 +17,15 @@ export default function ProjectsShowcase() {
     <ArticleWithIntro id="projects" title="Projects" description={description}>
       <ProjectTabs defaultValue={DEFAULT_SECTION} onTabChanged={setDescriptionFromTab} />
     </ArticleWithIntro>
+  )
+}
+
+function AerospaceDescriptionGrid() {
+  return (
+    <div className="flex justify-center gap-2">
+      <span>-</span>
+      <p>Please note that due to the nature of the work conducted, information is limited.</p>
+      <span>-</span>
+    </div>
   )
 }
