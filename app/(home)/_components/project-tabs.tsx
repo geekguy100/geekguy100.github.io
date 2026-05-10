@@ -40,7 +40,9 @@ function AerospaceProjects() {
 }
 
 function GeneralPiece({ section }: { section: string }) {
-  return content
+  const pieces = content
     .filter((piece) => piece.section === section)
     .map((piece) => <ShowcasePiece key={piece.id} {...piece} />)
+
+  return pieces.length > 0 ? pieces : <p className="text-center">There's nothing here yet</p>
 }
