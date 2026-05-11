@@ -9,6 +9,9 @@ export interface ShowcasePieceProps {
 }
 
 export function ShowcasePiece({ title, descriptions, id, img }: ShowcasePieceProps) {
+  const customStyle = {
+    "--base-delay": "900ms",
+  } as React.CSSProperties
   return (
     <Link href={`/projects/${id}`}>
       <article className="flex flex-col gap-4 rounded-md p-6 outline-primary hover:outline-3 sm:flex-row">
@@ -16,7 +19,7 @@ export function ShowcasePiece({ title, descriptions, id, img }: ShowcasePiecePro
           <Image fill unoptimized loading="eager" src={img} alt={`Thumbnail for content titled "${title}"`} />
         </div>
 
-        <div>
+        <div className="group-slide" style={customStyle}>
           <h3 className="text-center sm:text-left">{title}</h3>
           {descriptions.map((desc, i) => (
             <p key={i}>{desc}</p>

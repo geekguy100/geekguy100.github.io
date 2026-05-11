@@ -10,7 +10,7 @@ export interface ShowcaseSectionProps extends PropsWithChildren {
 
 export function ArticleWithIntro({ title, description, id, children }: ShowcaseSectionProps) {
   return (
-    <Article id={id}>
+    <Article className="relative" id={id}>
       <div className={`text-center ${description && SECTION_MARGIN_BOTTOM}`}>
         <SectionTitle className={description !== undefined ? "mb-0" : ""}>{title}</SectionTitle>
         {typeof description === "string" ? <p>{description}</p> : description}
