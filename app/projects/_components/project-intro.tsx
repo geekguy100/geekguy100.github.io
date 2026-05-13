@@ -1,5 +1,8 @@
+"use client"
 import { SectionTitle } from "@/components/section-title"
+import { slideInProps } from "@/lib/animation"
 import { cn } from "@/lib/utils"
+import { motion } from "motion/react"
 import type { PropsWithChildren } from "react"
 
 export function ProjectIntro({ children }: PropsWithChildren) {
@@ -7,9 +10,17 @@ export function ProjectIntro({ children }: PropsWithChildren) {
 }
 
 export function ProjectTitle({ children }: PropsWithChildren) {
-  return <SectionTitle className="capitalize">{children}</SectionTitle>
+  return (
+    <SectionTitle {...slideInProps(0)} className="capitalize">
+      {children}
+    </SectionTitle>
+  )
 }
 
 export function ProjectDescription({ className, children }: PropsWithChildren & { className?: string }) {
-  return <p className={cn("text-left", className)}>{children}</p>
+  return (
+    <motion.p {...slideInProps(1)} className={cn("text-left", className)}>
+      {children}
+    </motion.p>
+  )
 }
