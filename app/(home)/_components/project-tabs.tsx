@@ -1,9 +1,7 @@
-"use client"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { BookIcon, SatelliteIcon } from "lucide-react"
 import { ShowcasePiece } from "@/components/showcase-piece"
 import { content } from "@/misc/showcase.json"
-import { useState } from "react"
 import { MotionConfig } from "motion/react"
 
 export type Section = "university" | "aerospace"
@@ -13,17 +11,8 @@ export interface ProjectTabProps {
 }
 
 export function ProjectTabs({ onTabChanged, defaultValue }: ProjectTabProps) {
-  const [currentTab, setCurrentTab] = useState<Section>(defaultValue)
-
   return (
-    <Tabs
-      onValueChange={(value) => {
-        const desiredTab = value as Section
-        onTabChanged?.(desiredTab)
-        setCurrentTab(desiredTab)
-      }}
-      value={currentTab}
-    >
+    <Tabs defaultValue={defaultValue} onValueChange={onTabChanged as (value: string) => void}>
       <TabsList className="mx-auto w-full">
         <TabsTrigger value="university">
           <BookIcon />
