@@ -7,7 +7,7 @@ export const slideInVariants = {
   visible: (index: number = 0) => ({
     opacity: 1,
     translateX: 0,
-    transition: { delay: 0.02 * index },
+    transition: { delay: 0.05 * index },
   }),
 } satisfies Variants
 
