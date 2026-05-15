@@ -44,9 +44,9 @@ function AerospaceProjects() {
 function GeneralPiece({ section }: { section: string }) {
   const pieces = content
     .filter((piece) => piece.section === section)
-    .map((piece, i) => (
+    .map((piece) => (
       <MotionConfig key={piece.id}>
-        <ShowcasePiece animIndex={i + 1} {...piece} />
+        <ShowcasePiece {...piece} />
       </MotionConfig>
     ))
 

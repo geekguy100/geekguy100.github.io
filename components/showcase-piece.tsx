@@ -9,10 +9,9 @@ export interface ShowcasePieceProps {
   descriptions: string[]
   id: string
   img: string
-  animIndex?: number
 }
 
-export function ShowcasePiece({ title, descriptions, id, img, animIndex }: ShowcasePieceProps) {
+export function ShowcasePiece({ title, descriptions, id, img }: ShowcasePieceProps) {
   return (
     <Link href={`/projects/${id}`}>
       <article className="flex flex-col gap-4 rounded-md p-6 outline-primary hover:outline-3 sm:flex-row">
