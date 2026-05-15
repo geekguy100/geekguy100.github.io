@@ -52,7 +52,7 @@ function SteamDownload({ steamLink }: SteamDownloadProps) {
     <motion.div variants={childFadeInVariants}>
       <NavigationButton newTab href={steamLink}>
         <SteamIcon />
-        Purcase on Steam
+        Purchase on Steam
       </NavigationButton>
     </motion.div>
   )
