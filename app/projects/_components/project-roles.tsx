@@ -3,7 +3,7 @@ import { SectionTitle } from "@/components/section-title"
 import { motion } from "motion/react"
 import { cn } from "@/lib/utils"
 import type { ComponentPropsWithoutRef, CustomComponentPropsWithRef, PropsWithChildren } from "react"
-import { childFadeInVariants, childSlideInProps, containerSlideInProps } from "@/lib/animation"
+import { childFadeInVariants, childSlideInVariants, containerSlideInProps } from "@/lib/animation"
 import SlideInContainer from "@/components/slide-in-container"
 
 export function ProjectRoles({ title, children }: PropsWithChildren & { title?: string }) {
@@ -36,5 +36,5 @@ export function ProjectRoleResponsibilities({ className, children, ...props }: C
 }
 
 export function ProjectRoleResponsibility(props: CustomComponentPropsWithRef<typeof motion.li>) {
-  return <motion.li {...childSlideInProps} {...props} />
+  return <motion.li variants={childSlideInVariants} {...props} />
 }

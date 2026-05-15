@@ -32,9 +32,6 @@ export const childSlideInVariants = {
     translateX: 0,
   },
 } as const satisfies Variants
-export const childSlideInProps = {
-  variants: childSlideInVariants,
-}
 
 export const childFadeInVariants = {
   hidden: { opacity: 0 },
