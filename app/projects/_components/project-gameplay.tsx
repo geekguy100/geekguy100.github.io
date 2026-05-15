@@ -71,7 +71,8 @@ function ImgItem({ item }: ItemProps) {
 
 function EmbeddedGameplay({ src, title }: ProjectGameplayProps["content"][number]) {
   return (
-    <iframe
+    <motion.iframe
+      variants={childFadeInVariants}
       src={src}
       title={title}
       referrerPolicy="strict-origin-when-cross-origin"
