@@ -2,7 +2,7 @@
 import { SteamIcon } from "@/components/brand-icons"
 import { NavigationButton } from "@/components/nav-button"
 import { SectionTitle } from "@/components/section-title"
-import { childFadeInVariants, containerSlideInVariants } from "@/lib/animation"
+import { childFadeInVariants, childSlideInVariants, containerSlideInVariants } from "@/lib/animation"
 import { motion } from "motion/react"
 import { type ReactNode } from "react"
 
@@ -46,6 +46,7 @@ function LocalDownload({ downloadLink, githubLink }: LocalDownloadProps) {
   )
 }
 
+// TODO: Add motion support
 function SteamDownload({ steamLink }: SteamDownloadProps) {
   return (
     <NavigationButton newTab href={steamLink}>
@@ -57,9 +58,9 @@ function SteamDownload({ steamLink }: SteamDownloadProps) {
 
 function EmbeddedProject({ children, ...props }: EmbeddedDemoProps) {
   return (
-    <div className="flex flex-col items-center gap-2">
+    <motion.div variants={childFadeInVariants} className="flex flex-col items-center gap-2">
       {children}
       <LocalDownload {...props} />
-    </div>
+    </motion.div>
   )
 }
