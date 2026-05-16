@@ -23,3 +23,7 @@ export function MotionDiv(props: CustomComponentPropsWithRef<typeof motion.div>)
 export function MotionHeader5(props: CustomComponentPropsWithRef<typeof motion.div>) {
   return <motion.h5 {...props} />
 }
+
+export function MotionNav(props: CustomComponentPropsWithRef<typeof motion.nav>) {
+  return <motion.nav {...props} />
+}
