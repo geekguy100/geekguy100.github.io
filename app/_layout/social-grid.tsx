@@ -1,88 +1,26 @@
-import { MailIcon } from "lucide-react"
-import { NavigationButton } from "../../components/nav-button"
-import { GitHubIcon } from "../../components/brand-icons"
-import Image from "next/image"
-import { type PropsWithChildren, type ReactNode } from "react"
+"use client"
 import { ButtonGroup } from "@/components/ui/button-group"
-
-import ItchIoImage from "@/misc/static-icons/itchio.png"
-import LinkedInIcon from "@/misc/static-icons/linkedin_white.png"
-
-interface SocialProps {
-  href: string
-  icon: ReactNode
-  title: string
-}
-const socials: SocialProps[] = [
-  {
-    href: "https://github.com/geekguy100",
-    title: "GitHub Profile",
-    icon: <GitHubIcon className="size-7" />,
-  },
-  {
-    href: "https://geekguy100.itch.io",
-    title: "Itch.io Profile",
-    icon: (
-      <Image
-        sizes="30px"
-        loading="eager"
-        quality={50}
-        fill
-        src={ItchIoImage}
-        alt="Itch.io profile"
-        className="scale-50 rounded-lg"
-      />
-    ),
-  },
-  {
-    href: "mailto:kyle.grenier11@gmail.com",
-    title: "Email Kyle",
-    icon: <MailIcon className="size-5" />,
-  },
-  {
-    href: "https://www.linkedin.com/in/kyle-grenier",
-    title: "LinkedIn Profile",
-    icon: (
-      <Image
-        sizes="30px"
-        quality={50}
-        loading="eager"
-        fill
-        src={LinkedInIcon}
-        alt="LinkedIn profile"
-        className="scale-50"
-      />
-    ),
-  },
-]
+import type { PropsWithChildren } from "react"
+import { SocialIcons } from "./social-icons"
+import { MotionDiv } from "@/components/motion-primitives"
+import { stagger } from "motion"
 
 export function SocialGrid() {
   return (
-    <div className="flex justify-center sm:items-center sm:justify-normal">
+    <MotionDiv
+      initial="hidden"
+      animate="visible"
+      transition={{ delayChildren: stagger(0.1) }}
+      className="flex justify-center sm:items-center sm:justify-normal"
+    >
       <DesktopSocialGrid>
         <SocialIcons />
       </DesktopSocialGrid>
       <MobileSocialGrid>
         <SocialIcons />
       </MobileSocialGrid>
-    </div>
+    </MotionDiv>
   )
-}
-
-function SocialIcons() {
-  return socials.map(({ icon, ...props }) => {
-    return (
-      <NavigationButton
-        variant="outline"
-        className="relative size-14 hover:scale-110"
-        key={props.href}
-        newTab
-        {...props}
-      >
-        {icon}
-      </NavigationButton>
-    )
-  })
 }
 
 function DesktopSocialGrid({ children }: PropsWithChildren) {

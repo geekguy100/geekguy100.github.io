@@ -1,24 +1,19 @@
 "use client"
+import { MotionDiv } from "@/components/motion-primitives"
 import HatLogo from "@/public/hat.png"
 import Image from "next/image"
-import { useState } from "react"
 
 export function SiteLogo() {
-  const [animPlayed, setAnimPlayed] = useState(false)
   return (
     <div className="flex flex-col items-center justify-center sm:items-end">
-      <Image
-        unoptimized
-        width={175}
-        src={HatLogo}
-        style={{ animationComposition: "add" }}
-        alt="A black hat with wings"
-        className={`-my-6 sm:my-0 ${!animPlayed && "sm:animate-header-enter"}`}
-        onAnimationEnd={(ev) => {
-          if (ev.animationName !== "header-enter") return
-          return setAnimPlayed(true)
-        }}
-      />
+      <MotionDiv
+        initial={{ scale: 0 }}
+        animate={{ scale: 1 }}
+        transition={{ scale: { type: "spring", visualDuration: 0.25, bounce: 0.8 } }}
+      >
+        <Image unoptimized width={175} src={HatLogo} alt="A black hat with wings" className={`-my-6 sm:my-0`} />
+      </MotionDiv>
+
       <ConstructionBanner />
     </div>
   )
