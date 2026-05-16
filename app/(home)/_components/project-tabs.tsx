@@ -35,7 +35,7 @@ export function ProjectTabs({ onTabChanged, defaultValue }: ProjectTabProps) {
         <AerospaceProjects />
       </TabsContent>
       <TabsContent value="personal">
-        <AerospaceProjects />
+        <PersonalProjects />
       </TabsContent>
     </Tabs>
   )
@@ -49,7 +49,11 @@ function AerospaceProjects() {
   return <GeneralPiece section="aerospace" />
 }
 
-function GeneralPiece({ section }: { section: string }) {
+function PersonalProjects() {
+  return <GeneralPiece section="personal" />
+}
+
+function GeneralPiece({ section }: { section: Section }) {
   const pieces = content
     .filter((piece) => piece.section === section)
     .map((piece) => <ShowcasePiece key={piece.id} icon={getPieceIcon(piece.id)} {...piece} />)
