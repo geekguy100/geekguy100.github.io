@@ -31,12 +31,12 @@ function ConstructionBanner() {
       className="absolute left-2 size-60 -rotate-45 max-sm:-top-2"
     >
       <defs>
-        <pattern id="star" viewBox="0,0,5,5" width="20%" height="100%">
+        <pattern id="rect" viewBox="0,0,5,5" width="20%" height="100%">
           <line x1={0} y1={-3} x2={10} y2={20} />
         </pattern>
       </defs>
       <rect x="2" y="6" width="24" height="8" rx="1" fill="yellow" />
-      <rect x="2" y="6" width="24" height="8" rx="1" stroke="none" fill="url(#star)" />
+      <rect x="2" y="6" width="24" height="8" rx="1" stroke="none" fill="url(#rect)" />
       <text x={5} y={13} strokeWidth="0.25" stroke="black" fill="white" style={{ font: "8px sans-serif" }}>
         W.I.P
       </text>
