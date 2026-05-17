@@ -100,15 +100,7 @@
       "id": "raycast-engine",
       "section": "personal"
     },
-    {
-      "title": "Portfolio",
-      "descriptions": [
-        "I created this portfolio using the web development skills I acquired at The Aerospace Corporation."
-      ],
-      "img": "/long-hat.png",
-      "id": "portfolio",
-      "section": "personal"
-    },
+
     {
       "title": "Peace Fighter",
       "descriptions": [
@@ -124,6 +116,15 @@
       "descriptions": ["My team's submission to GMTK 2024 with the theme Built to Scale."],
       "img": "/forest-foodies-gameplay.webp",
       "id": "forest-foodies",
+      "section": "personal"
+    },
+    {
+      "title": "Portfolio",
+      "descriptions": [
+        "I created this portfolio using the web development skills I acquired at The Aerospace Corporation."
+      ],
+      "img": "/long-hat.png",
+      "id": "portfolio",
       "section": "personal"
     }
   ]
