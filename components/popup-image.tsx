@@ -1,9 +1,8 @@
-"use client"
 import type { ComponentProps } from "react"
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "./ui/dialog"
 import Image from "next/image"
-import { motion } from "motion/react"
 import { childSlideInVariants } from "@/lib/animation"
+import { MotionDiv } from "./motion-primitives"
 
 export type PopupImageProps = ComponentProps<typeof Image> & { title: string; width: number; height: number }
 
@@ -11,9 +10,9 @@ export function PopupImage(props: PopupImageProps) {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <motion.div variants={childSlideInVariants}>
+        <MotionDiv variants={childSlideInVariants}>
           <Image role="button" {...props} style={{ width: "auto", height: "auto" }} />
-        </motion.div>
+        </MotionDiv>
       </DialogTrigger>
       <DialogContent className="w-max sm:max-w-[90vw]">
         <DialogHeader>
