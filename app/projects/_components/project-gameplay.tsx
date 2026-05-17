@@ -4,14 +4,16 @@ import Image from "next/image"
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
 import { childFadeInVariants, childSlideInVariants } from "@/lib/animation"
 import { motion } from "motion/react"
+import { caption } from "motion/react-client"
 
-type ContentItem =
+type ContentItem = { caption?: string } & (
   | {
       src: string
       title: string
       mimeType: string
     }
   | ExternalContentItem
+)
 
 type ExternalContentItem = {
   src: `http${string}`
@@ -31,9 +33,12 @@ export function ProjectGameplay({ content, title }: ProjectGameplayProps) {
               <div className="flex h-full items-center justify-center">
                 {isUrl(t.src) && <EmbeddedGameplay {...t} />}
                 {!isUrl(t.src) && (
-                  <motion.div variants={childFadeInVariants} className="relative aspect-video w-125 lg:w-200">
-                    {t.mimeType!.includes("video") ? <VideoItem item={t} /> : <ImgItem item={t} />}
-                  </motion.div>
+                  <div>
+                    <motion.div variants={childFadeInVariants} className="relative aspect-video w-125 lg:w-200">
+                      {t.mimeType!.includes("video") ? <VideoItem item={t} /> : <ImgItem item={t} />}
+                    </motion.div>
+                    {t.caption && <p className="text-center text-sm italic">{t.caption}</p>}
+                  </div>
                 )}
               </div>
             </CarouselItem>
