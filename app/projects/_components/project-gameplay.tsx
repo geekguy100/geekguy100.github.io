@@ -33,8 +33,8 @@ export function ProjectGameplay({ content, title }: ProjectGameplayProps) {
               <div className="flex h-full items-center justify-center">
                 {isUrl(t.src) && <EmbeddedGameplay {...t} />}
                 {!isUrl(t.src) && (
-                  <div>
-                    <motion.div variants={childFadeInVariants} className="relative aspect-video w-125 lg:w-200">
+                  <div className="aspect-video w-125 lg:w-200">
+                    <motion.div variants={childFadeInVariants} className="relative size-full">
                       {t.mimeType!.includes("video") ? <VideoItem item={t} /> : <ImgItem item={t} />}
                     </motion.div>
                     {t.caption && <p className="text-center text-sm italic">{t.caption}</p>}
@@ -45,10 +45,10 @@ export function ProjectGameplay({ content, title }: ProjectGameplayProps) {
           ))}
         </CarouselContent>
         {content.length > 1 && (
-          <>
-            <CarouselNext size="icon-lg" />
+          <div className="hidden sm:block">
             <CarouselPrevious size="icon-lg" />
-          </>
+            <CarouselNext size="icon-lg" />
+          </div>
         )}
       </Carousel>
     </article>
@@ -82,7 +82,7 @@ function EmbeddedGameplay({ src, title }: ProjectGameplayProps["content"][number
       title={title}
       referrerPolicy="strict-origin-when-cross-origin"
       allowFullScreen
-      className="aspect-video w-125 lg:w-200"
+      className="size-full"
     />
   )
 }
