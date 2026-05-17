@@ -32,7 +32,7 @@ function UniversityDescription() {
 function PersonalDescription() {
   return (
     <MotionParagraph variants={childFadeInVariants}>
-      Projects that I have or am currently working on outside of work
+      Projects that I have or am currently pursuing outside of work
     </MotionParagraph>
   )
 }
