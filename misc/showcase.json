@@ -109,14 +109,16 @@
       ],
       "img": "/peace-fighter-gameplay.gif",
       "id": "peace-fighter",
-      "section": "personal"
+      "section": "personal",
+      "misc": "gameJam"
     },
     {
       "title": "Forest Foodies",
       "descriptions": ["My team's submission to GMTK 2024 with the theme Built to Scale."],
       "img": "/forest-foodies-gameplay.webp",
       "id": "forest-foodies",
-      "section": "personal"
+      "section": "personal",
+      "misc": "gameJam"
     },
     {
       "title": "Portfolio",

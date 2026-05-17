@@ -3,13 +3,10 @@ import { motion } from "motion/react"
 import Link from "next/link"
 import SlideInContainer from "./slide-in-container"
 import type { ReactNode } from "react"
+import type { ShowcasePiece as ShowcasePieceType } from "@/types"
 
-export interface ShowcasePieceProps {
-  title: string
+export interface ShowcasePieceProps extends Omit<ShowcasePieceType, "section"> {
   icon?: ReactNode
-  descriptions: string[]
-  id: string
-  img: string
 }
 
 export function ShowcasePiece({ title, icon, descriptions, id, img }: ShowcasePieceProps) {
