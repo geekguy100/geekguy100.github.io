@@ -2,7 +2,6 @@ import { getProjectMetdata } from "@/lib/helpers"
 import { PlayProject } from "../_components/play-project"
 import { ProjectIntro, ProjectTitle, ProjectDescription } from "../_components/project-intro"
 import { Project } from "../_components/project-wrapper"
-import { PdfViewer } from "@/components/pdf-viewing/pdf-viewer-lazy"
 import { SectionTitle } from "@/components/section-title"
 import { ProjectFooter } from "../_components/project-footer"
 import {
@@ -30,13 +29,18 @@ export default function SpeedrunShoppingPage() {
             Speed is the name of the game!
           </ProjectDescription>
           <ProjectDescription>
-            Created for CIS 497 - Unity Design Patterns with the theme 'comedy' to practice implementing design patterns
+            Created for CIS 497 - Unity Design Patterns with the theme "comedy" to practice implementing design patterns
             into larger projects with a team.
           </ProjectDescription>
         </div>
       </ProjectIntro>
-      <PlayProject type="embed" downloadLink="" githubLink="https://github.com/geekguy100/CIS497_ComedyGame">
-        <iframe src="https://itch.io/embed-upload/3535053?color=333333" width="1000" height="820" />
+      <PlayProject
+        type="embed"
+        itchLink="https://geekguy100.itch.io/shopping-cart"
+        downloadLink=""
+        githubLink="https://github.com/geekguy100/CIS497_ComedyGame"
+      >
+        <iframe src="https://itch.io/embed-upload/3535053?color=333333" width="1000" height="700" />
       </PlayProject>
       <ProjectRoles>
         <ProjectRole>

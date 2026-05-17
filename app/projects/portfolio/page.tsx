@@ -113,6 +113,25 @@ export default function PortfolioPage() {
             </Responsibility>
           </Responsibilities>
         </ProjectRole>
+
+        <ProjectRole>
+          <ProjectRoleHeader>Misc.</ProjectRoleHeader>
+          <Responsibilities>
+            <Responsibility>
+              Projects listed on the homepage are dictated by a{" "}
+              <code className="underline">
+                <Link
+                  href="https://github.com/geekguy100/geekguy100.github.io/blob/main/misc/showcase.json"
+                  target="_blank"
+                >
+                  showcase.json
+                </Link>
+              </code>{" "}
+              file that lets me easily change the order the content is displayed and properties of each project, such as
+              the title and thumbnail.
+            </Responsibility>
+          </Responsibilities>
+        </ProjectRole>
       </ProjectRoles>
     </Project>
   )

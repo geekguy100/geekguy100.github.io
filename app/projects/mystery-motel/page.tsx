@@ -2,7 +2,6 @@ import { getProjectMetdata } from "@/lib/helpers"
 import { PlayProject } from "../_components/play-project"
 import { ProjectIntro, ProjectTitle, ProjectDescription } from "../_components/project-intro"
 import { Project } from "../_components/project-wrapper"
-import { PdfViewer } from "@/components/pdf-viewing/pdf-viewer-lazy"
 import { SectionTitle } from "@/components/section-title"
 import { ProjectFooter } from "../_components/project-footer"
 import {
@@ -40,6 +39,7 @@ export default function MysteryMotelPage() {
         type="embed"
         downloadLink="https://geekguy100.itch.io/detective-game"
         githubLink="https://github.com/geekguy100/CIS497_DetectiveGame"
+        itchLink="https://geekguy100.itch.io/detective-game"
       >
         <iframe src="https://itch.io/embed-upload/3791494?color=333333" allowFullScreen width="1300" height="820" />
       </PlayProject>
