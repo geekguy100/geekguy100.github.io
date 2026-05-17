@@ -56,14 +56,12 @@ export function ProjectGameplay({ content, title }: ProjectGameplayProps) {
                 <div className="aspect-video">
                   {isUrl(t.src) && <EmbeddedGameplay {...t} />}
                   {!isUrl(t.src) && (
-                    <div className="flex size-full flex-col">
-                      <div className="relative size-full">
-                        {t.mimeType!.includes("video") ? <VideoItem item={t} /> : <ImgItem item={t} />}
-                      </div>
-                      {t.caption && <p className="text-center text-sm italic">{t.caption}</p>}
+                    <div className="relative size-full">
+                      {t.mimeType!.includes("video") ? <VideoItem item={t} /> : <ImgItem item={t} />}
                     </div>
                   )}
                 </div>
+                {t.caption && <p className="text-center text-sm italic">{t.caption}</p>}
               </CarouselItem>
             ))}
           </CarouselContent>
