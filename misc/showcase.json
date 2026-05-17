@@ -108,6 +108,16 @@
       "img": "/long-hat.png",
       "id": "portfolio",
       "section": "personal"
+    },
+    {
+      "title": "Peace Fighter",
+      "descriptions": [
+        "My team's submission to GMTK 2023 with the theme roles reversed.",
+        "Scored **#774** in the creativity category out of over 6,000 entries."
+      ],
+      "img": "/long-hat.png",
+      "id": "peace-fighter",
+      "section": "personal"
     }
   ]
 }
