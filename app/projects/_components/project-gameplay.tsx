@@ -1,9 +1,17 @@
 "use client"
 import { SectionTitle } from "@/components/section-title"
 import Image from "next/image"
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+  type CarouselApi,
+} from "@/components/ui/carousel"
 import { childFadeInVariants } from "@/lib/animation"
 import { motion } from "motion/react"
+import { useEffect, useState } from "react"
 
 type ContentItem = { caption?: string } & (
   | {
@@ -22,11 +30,19 @@ type ExternalContentItem = {
 
 export type ProjectGameplayProps = { content: ContentItem[]; title?: string }
 export function ProjectGameplay({ content, title }: ProjectGameplayProps) {
+  const [api, setApi] = useState<CarouselApi | undefined>()
+  const [page, setPage] = useState(1)
+
+  useEffect(() => {
+    if (!api) return
+    api.on("select", () => setPage(api.selectedScrollSnap() + 1))
+  }, [api])
+
   return (
     <article>
       <SectionTitle variants={childFadeInVariants}>{title ?? "Gameplay"}</SectionTitle>
       <motion.div className="mx-auto max-w-4xl max-lg:px-12" variants={childFadeInVariants}>
-        <Carousel>
+        <Carousel setApi={setApi}>
           <CarouselContent>
             {content.map((t, i) => (
               <CarouselItem key={i}>
@@ -51,6 +67,11 @@ export function ProjectGameplay({ content, title }: ProjectGameplayProps) {
             </div>
           )}
         </Carousel>
+        {content.length > 1 && (
+          <p className="text-center text-sm">
+            [ {page} / {content.length} ]
+          </p>
+        )}
       </motion.div>
     </article>
   )
