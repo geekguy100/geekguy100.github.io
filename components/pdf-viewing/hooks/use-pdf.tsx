@@ -11,7 +11,6 @@ import "pdfjs-dist/build/pdf.worker.min.mjs"
 // CONSIDER: Consider adding a PDFContext that can store this Map more permanently.
 
 // TODO: Test to make sure that if documents later in the PDF take a while to load that the loading spinner displays correctly.
-// TODO: Figure out how to scale the PDF viewport and adjust the width and height of the canvas as the screen size shrinks.
 const loadedDocuments: Map<string, pdf.PDFDocumentProxy> = new Map()
 
 export function useRenderedPDF(src: string, canvas: HTMLCanvasElement | null, initialPageNum: number = 1) {
@@ -24,6 +23,7 @@ export function useRenderedPDF(src: string, canvas: HTMLCanvasElement | null, in
 
   // Loading the current page
   useEffect(() => {
+    if (document === undefined) return
     async function loadPageAsync() {
       setIsPageLoading(true)
       try {
@@ -46,8 +46,6 @@ export function useRenderedPDF(src: string, canvas: HTMLCanvasElement | null, in
         setIsPageLoading(false)
       }
     }
-
-    if (document === undefined) return
     loadPageAsync()
   }, [document, pageNum])
 

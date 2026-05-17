@@ -1,14 +1,26 @@
+"use client"
 import { SectionTitle } from "@/components/section-title"
 import Image from "next/image"
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+  type CarouselApi,
+} from "@/components/ui/carousel"
+import { childFadeInVariants } from "@/lib/animation"
+import { motion } from "motion/react"
+import { useEffect, useState } from "react"
 
-type ContentItem =
+type ContentItem = { caption?: string } & (
   | {
       src: string
       title: string
       mimeType: string
     }
   | ExternalContentItem
+)
 
 type ExternalContentItem = {
   src: `http${string}`
@@ -16,34 +28,57 @@ type ExternalContentItem = {
   mimeType?: never
 }
 
-export type ProjectGameplayProps = { content: ContentItem[] }
-export function ProjectGameplay({ content }: ProjectGameplayProps) {
+export type ProjectGameplayProps = { content: ContentItem[]; title?: string }
+export function ProjectGameplay({ content, title }: ProjectGameplayProps) {
+  const [api, setApi] = useState<CarouselApi | undefined>()
+  const [page, setPage] = useState(1)
+
+  useEffect(() => {
+    if (!api) return
+    function setState() {
+      setPage(api!.selectedScrollSnap() + 1)
+    }
+
+    api.on("select", setState)
+    return () => {
+      api.off("select", setState)
+    }
+  }, [api])
+
   return (
-    <section>
-      <SectionTitle>Gameplay</SectionTitle>
-      <Carousel className="mx-auto">
-        <CarouselContent>
-          {content.map((t, i) => (
-            <CarouselItem key={i}>
-              <div className="flex h-full items-center justify-center">
-                {isUrl(t.src) && <EmbeddedGameplay {...t} />}
-                {!isUrl(t.src) && (
-                  <div className="relative size-full">
-                    {t.mimeType!.includes("video") ? <VideoItem item={t} /> : <ImgItem item={t} />}
-                  </div>
-                )}
-              </div>
-            </CarouselItem>
-          ))}
-        </CarouselContent>
+    <article>
+      <SectionTitle variants={childFadeInVariants}>{title ?? "Gameplay"}</SectionTitle>
+      <motion.div className="mx-auto max-w-4xl max-lg:px-12" variants={childFadeInVariants}>
+        <Carousel setApi={setApi}>
+          <CarouselContent>
+            {content.map((t, i) => (
+              <CarouselItem key={i}>
+                <div className="aspect-video">
+                  {isUrl(t.src) && <EmbeddedGameplay {...t} />}
+                  {!isUrl(t.src) && (
+                    <div className="relative size-full">
+                      {t.mimeType!.includes("video") ? <VideoItem item={t} /> : <ImgItem item={t} />}
+                    </div>
+                  )}
+                </div>
+                {t.caption && <p className="text-center text-sm italic">{t.caption}</p>}
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          {content.length > 1 && (
+            <div className="max-sm:hidden">
+              <CarouselPrevious size="icon-lg" />
+              <CarouselNext size="icon-lg" />
+            </div>
+          )}
+        </Carousel>
         {content.length > 1 && (
-          <>
-            <CarouselNext size="icon-lg" />
-            <CarouselPrevious size="icon-lg" />
-          </>
+          <p className="text-center text-sm">
+            [ {page} / {content.length} ]
+          </p>
         )}
-      </Carousel>
-    </section>
+      </motion.div>
+    </article>
   )
 }
 
@@ -54,7 +89,7 @@ interface ItemProps {
 function VideoItem({ item }: ItemProps) {
   const { mimeType, title, src } = item
   return (
-    <video className="mx-auto aspect-video w-125 lg:w-200" controls title={title} width={1120}>
+    <video className="mx-auto" controls title={title}>
       <source src={src} type={mimeType} />
       <p>Your browser does not support video playback</p>
     </video>
@@ -68,12 +103,13 @@ function ImgItem({ item }: ItemProps) {
 
 function EmbeddedGameplay({ src, title }: ProjectGameplayProps["content"][number]) {
   return (
-    <iframe
+    <motion.iframe
+      variants={childFadeInVariants}
       src={src}
       title={title}
       referrerPolicy="strict-origin-when-cross-origin"
       allowFullScreen
-      className="aspect-video w-125 lg:w-200"
+      className="mx-auto size-full"
     />
   )
 }

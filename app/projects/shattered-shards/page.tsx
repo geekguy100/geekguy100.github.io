@@ -14,6 +14,8 @@ import {
   ProjectRoleResponsibility as Responsibility,
   ProjectRoles,
 } from "../_components/project-roles"
+import { MotionArticleContainer } from "../_components/motion-article-container"
+import { MotionPdfViewer } from "../_components/motion-pdf-viewer"
 
 export const metadata = getProjectMetdata("shattered-shards")
 
@@ -64,24 +66,24 @@ export default function ShatteredShards() {
           </Responsibilities>
         </ProjectRole>
       </ProjectRoles>
-      <article>
+      <MotionArticleContainer>
         <SectionTitle>Design Briefs</SectionTitle>
-        <PdfViewer
+        <MotionPdfViewer
           showPageNumber
           downloadable
           fileName="Shattered Shards Design Briefs"
           src="/horror_design_briefs.pdf"
         />
-      </article>
-      <article>
+      </MotionArticleContainer>
+      <MotionArticleContainer>
         <SectionTitle>Final Changes</SectionTitle>
-        <PdfViewer
+        <MotionPdfViewer
           showPageNumber
           downloadable
           fileName="Shattered Shards Final Changes"
           src="/horror_final_changes.pdf"
         />
-      </article>
+      </MotionArticleContainer>
       <ProjectFooter href="https://drive.google.com/drive/folders/1D6u7gq7-ZMg7tUY_IlXbfOdVSaPgalBy?usp=sharing" />
     </Project>
   )

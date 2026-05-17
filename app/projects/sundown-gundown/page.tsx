@@ -14,6 +14,7 @@ import { SectionTitle } from "@/components/section-title"
 import { PopupImage } from "@/components/popup-image"
 import { PdfViewer } from "@/components/pdf-viewing/pdf-viewer-lazy"
 import { ProjectFooter } from "../_components/project-footer"
+import { MotionPdfViewer } from "../_components/motion-pdf-viewer"
 
 export const metadata = getProjectMetdata("sundown-gundown")
 
@@ -69,7 +70,7 @@ export default function SundownGundownPage() {
 
       <article>
         <SectionTitle>Design Briefs</SectionTitle>
-        <PdfViewer
+        <MotionPdfViewer
           showPageNumber
           downloadable
           fileName="Sundown Gundown Design Briefs"
@@ -79,7 +80,7 @@ export default function SundownGundownPage() {
 
       <article>
         <SectionTitle>Final Changes</SectionTitle>
-        <PdfViewer
+        <MotionPdfViewer
           showPageNumber
           downloadable
           fileName="Sundown Gundown Final Changes"

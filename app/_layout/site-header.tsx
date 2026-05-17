@@ -1,6 +1,6 @@
 import { SocialGrid } from "./social-grid"
-import { NavigationBar } from "./nav-bar"
 import { SiteLogo } from "./site-logo"
+import { NameAndNavbar } from "./name-and-navbar"
 
 export function SiteHeader() {
   // Defaulting header height to what it is when the Image is fully loaded.
@@ -10,14 +10,8 @@ export function SiteHeader() {
       <div className="flex flex-col items-center justify-center sm:items-end">
         <SiteLogo />
       </div>
-      {/* Name */}
-      <div className="flex flex-col items-center justify-center gap-2">
-        <div>
-          <h1>Kyle Grenier</h1>
-          <h4>Immersive Technology and Game Developer</h4>
-        </div>
-        <NavigationBar />
-      </div>
+      {/* Name and Navigation */}
+      <NameAndNavbar />
       {/* Socials */}
       <SocialGrid />
     </header>
