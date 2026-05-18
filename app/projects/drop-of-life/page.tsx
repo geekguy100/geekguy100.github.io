@@ -29,11 +29,7 @@ export default function DropOfLifePage() {
           the various states of matter to explore the environment and water the dying flowers.
         </ProjectDescription>
       </ProjectIntro>
-      <PlayProject
-        type="download"
-        githubLink="https://github.com/geekguy100/IM388-A-Drop-of-Life/"
-        downloadLink="https://drive.google.com/file/d/1mxJtP-POoPq0czHlDWoavCrxZ65IXGxu/view?usp=sharing"
-      />
+      <PlayProject type="download" githubLink="https://github.com/geekguy100/IM388-A-Drop-of-Life/" downloadLink="" />
 
       <ProjectRoles>
         <ProjectRole>

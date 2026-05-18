@@ -30,11 +30,7 @@ export default function SundownGundownPage() {
           bandits before they take you out!
         </ProjectDescription>
       </ProjectIntro>
-      <PlayProject
-        type="download"
-        githubLink="https://github.com/geekguy100/CowboyCapstonePrototype"
-        downloadLink="https://drive.google.com/file/d/1KyqRJTag6QUuXfLSDVuCHmedKlMKWNwZ/view?usp=sharing"
-      />
+      <PlayProject type="download" githubLink="https://github.com/geekguy100/CowboyCapstonePrototype" downloadLink="" />
       <ProjectGameplay
         content={[
           {

@@ -49,11 +49,7 @@ export default function OutOfServicePage() {
           </ProjectDescription>
         </div>
       </ProjectIntro>
-      <PlayProject
-        type="download"
-        downloadLink="https://drive.google.com/file/d/1DBc_dLZyocg4E56GaxQtA2FjnleRPgr4/view?usp=sharing"
-        githubLink="https://github.com/geekguy100/FMVGame/"
-      />
+      <PlayProject type="download" downloadLink="" githubLink="https://github.com/geekguy100/FMVGame/" />
 
       <article className="space-y-2">
         <SectionTitle>Praise for Out Of Service</SectionTitle>

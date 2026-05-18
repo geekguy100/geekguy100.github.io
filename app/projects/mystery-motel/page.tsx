@@ -37,7 +37,7 @@ export default function MysteryMotelPage() {
       </ProjectIntro>
       <PlayProject
         type="embed"
-        downloadLink="https://geekguy100.itch.io/detective-game"
+        downloadLink=""
         githubLink="https://github.com/geekguy100/CIS497_DetectiveGame"
         itchLink="https://geekguy100.itch.io/detective-game"
       >

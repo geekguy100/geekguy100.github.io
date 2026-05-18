@@ -32,11 +32,7 @@ export default function ShatteredShards() {
           </ProjectDescription>
         </div>
       </ProjectIntro>
-      <PlayProject
-        type="download"
-        downloadLink="https://drive.google.com/file/d/1kPSF9F72ahyI6RNlIAzy_j9w3luQ46FS/view?usp=sharing"
-        githubLink="https://github.com/geekguy100/HorrorGame"
-      />
+      <PlayProject type="download" downloadLink="" githubLink="https://github.com/geekguy100/HorrorGame" />
       <ProjectGameplay
         content={[
           {

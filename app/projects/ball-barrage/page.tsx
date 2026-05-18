@@ -29,11 +29,7 @@ export default function BallBarragePage() {
         </ProjectDescription>
       </ProjectIntro>
 
-      <PlayProject
-        type="download"
-        downloadLink="https://drive.google.com/file/d/1HhoSgexqI4W7K6al0_EW6CHTuuHtV6OZ/view?usp=sharing"
-        githubLink="https://github.com/geekguy100/DodgeballGame"
-      />
+      <PlayProject type="download" downloadLink="" githubLink="https://github.com/geekguy100/DodgeballGame" />
 
       <ProjectGameplay
         content={[
