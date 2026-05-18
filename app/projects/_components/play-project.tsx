@@ -1,14 +1,14 @@
-"use client"
 import { SteamIcon } from "@/components/icons/brand-icons"
+import { MotionDiv } from "@/components/motion-primitives"
 import { NavigationButton } from "@/components/nav-button"
 import { SectionTitle } from "@/components/section-title"
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip"
 import { childFadeInVariants } from "@/lib/animation"
-import { motion } from "motion/react"
 import React from "react"
-import { type ReactNode } from "react"
+import type { ReactNode } from "react"
+import { EmbeddedProject } from "./embedded-project"
 
-type EmbeddedDemoProps = { type: "embed"; itchLink: string; children: ReactNode } & Omit<
+export type EmbeddedDemoProps = { type: "embed"; itchLink: string; children: ReactNode } & Omit<
   LocalDownloadProps,
   "steamLink"
 >
@@ -39,7 +39,7 @@ function DownloadDemo(props: DownloadDemoProps) {
   return props.steamLink !== undefined ? <SteamDownload {...props} /> : <LocalDownload {...props} />
 }
 
-function LocalDownload({
+export function LocalDownload({
   downloadLink,
   githubLink,
   children,
@@ -48,7 +48,7 @@ function LocalDownload({
 }: LocalDownloadProps & { children?: ReactNode }) {
   const numButtons = React.Children.count(children) + Number(downloadLink !== "") + Number(githubLink !== "")
   return (
-    <motion.div
+    <MotionDiv
       variants={childFadeInVariants}
       className="grid gap-4"
       style={{
@@ -77,32 +77,17 @@ function LocalDownload({
         </Tooltip>
       )}
       {children}
-    </motion.div>
+    </MotionDiv>
   )
 }
 
 function SteamDownload({ steamLink }: SteamDownloadProps) {
   return (
-    <motion.div variants={childFadeInVariants}>
+    <MotionDiv variants={childFadeInVariants}>
       <NavigationButton newTab href={steamLink}>
         <SteamIcon />
         Purchase on Steam
       </NavigationButton>
-    </motion.div>
-  )
-}
-
-function EmbeddedProject({ children, itchLink, ...props }: EmbeddedDemoProps) {
-  return (
-    <motion.div variants={childFadeInVariants} className="flex flex-col items-center gap-2">
-      {children}
-      <LocalDownload {...props}>
-        {itchLink && (
-          <NavigationButton newTab href={itchLink}>
-            Play on Itch.io
-          </NavigationButton>
-        )}
-      </LocalDownload>
-    </motion.div>
+    </MotionDiv>
   )
 }
