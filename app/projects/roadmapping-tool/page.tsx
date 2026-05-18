@@ -28,9 +28,6 @@ export default function RoadmappingToolPage() {
             accessible, allowed me to bring on additional team members, and allowed us to leverage the ever-growing
             ecosystem of packages available for web applications.
           </ProjectDescription>
-          <ProjectDescription className="italic">
-            Please note that, unfortunately, no photos or videos of my work are available publicly.
-          </ProjectDescription>
         </div>
       </ProjectIntro>
 

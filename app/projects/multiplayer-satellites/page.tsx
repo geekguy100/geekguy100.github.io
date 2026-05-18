@@ -17,16 +17,11 @@ export default function MultiplayerSatellitesPage() {
     <Project>
       <ProjectIntro>
         <ProjectTitle>Multiplayer Satellite Viewer</ProjectTitle>
-        <div className="space-y-2">
-          <ProjectDescription>
-            Contributed to the development of a multiplayer virtual reality Unity application. The application is
-            intended to serve as an educational app to help engineers visualize CAD models in a virtual construction bay
-            and provide guidance as to how the satellites are assembled.
-          </ProjectDescription>
-          <ProjectDescription className="italic">
-            Please note that, unfortunately, no photos or videos of my work are available publicly.
-          </ProjectDescription>
-        </div>
+        <ProjectDescription>
+          Contributed to the development of a multiplayer virtual reality Unity application. The application is intended
+          to serve as an educational app to help engineers visualize CAD models in a virtual construction bay and
+          provide guidance as to how the satellites are assembled.
+        </ProjectDescription>
       </ProjectIntro>
 
       <ProjectRoles>

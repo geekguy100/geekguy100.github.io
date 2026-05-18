@@ -49,9 +49,6 @@ export default function UnrealCesiumPage() {
             </Link>{" "}
             project.
           </ProjectDescription>
-          <ProjectDescription className="italic">
-            Please note that, unfortunately, no photos or videos of my work are available publicly.
-          </ProjectDescription>
         </div>
       </ProjectIntro>
 
