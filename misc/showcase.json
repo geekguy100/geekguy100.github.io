@@ -14,7 +14,7 @@
     {
       "title": "Speedrun Shopping",
       "descriptions": [
-        "A game created given the theme of 'comedy', Speedrun Shopping is a frantic, fast-paced shopping simulator. Ram into other shoppers, steal items you need from them, and try to fill out your shopping list as quickly as you can!",
+        "A game created given the theme of \"comedy\", Speedrun Shopping is a frantic, fast-paced shopping simulator. Ram into other shoppers, steal items you need from them, and try to fill out your shopping list as quickly as you can!",
         "Created for CIS 497 - Unity Design Patterns for practice working with design patterns on a large-scale project."
       ],
       "img": "/speedrun-shopping.gif",
@@ -99,6 +99,26 @@
       "img": "/js_raycasting_demo.gif",
       "id": "raycast-engine",
       "section": "personal"
+    },
+
+    {
+      "title": "Peace Fighter",
+      "descriptions": [
+        "My team's submission to GMTK 2023 with the theme Roles Reversed.",
+        "Scored **#774** in the creativity category out of over 6,000 entries."
+      ],
+      "img": "/peace-fighter-gameplay.gif",
+      "id": "peace-fighter",
+      "section": "personal",
+      "misc": "gameJam"
+    },
+    {
+      "title": "Forest Foodies",
+      "descriptions": ["My team's submission to GMTK 2024 with the theme Built to Scale."],
+      "img": "/forest-foodies-gameplay.webp",
+      "id": "forest-foodies",
+      "section": "personal",
+      "misc": "gameJam"
     },
     {
       "title": "Portfolio",
