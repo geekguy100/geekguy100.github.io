@@ -44,4 +44,9 @@ export const childScaleInVariants = {
   hidden: { scale: 0 },
   visible: { scale: 1, transition: { scale: { type: "spring", visualDuration: 0.25, bounce: 0.7 } } },
 } as const satisfies Variants
+
+export const reducedChildScaleInVariants = {
+  hidden: { scale: 0 },
+  visible: { scale: 1, transition: { scale: { type: "spring", visualDuration: 0.25, bounce: 0.4 } } },
+} as const satisfies Variants
 //#endregion

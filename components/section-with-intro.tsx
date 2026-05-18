@@ -1,5 +1,5 @@
 "use client"
-import type { CustomComponentPropsWithRef, PropsWithChildren, ReactNode } from "react"
+import type { CustomComponentPropsWithRef, ReactNode } from "react"
 import { Article } from "./containers"
 import { SECTION_MARGIN_BOTTOM, SectionTitle } from "./section-title"
 import { childFadeInVariants, containerSlideInProps } from "@/lib/animation"
@@ -12,7 +12,7 @@ export type ShowcaseSectionProps = Omit<
 } & {
   title: string
   description?: ReactNode
-  id: string
+  id?: string
 }
 
 export function ArticleWithIntro({ title, description, id, children, ...props }: ShowcaseSectionProps) {
