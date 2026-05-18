@@ -6,6 +6,7 @@ import { childFadeInVariants } from "@/lib/animation"
 const routes = [
   { href: "/", children: "Home" },
   { href: "/#projects", children: "Projects" },
+  { href: "/certifications", children: "Certifications" },
 ]
 
 export function NavigationBar() {
