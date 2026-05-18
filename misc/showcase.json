@@ -161,6 +161,15 @@
       "img": "/gantt-chart.svg",
       "id": "roadmapping-tool",
       "section": "aerospace"
+    },
+    {
+      "title": "Multiplayer Satellite Viewer",
+      "descriptions": [
+        "A multiplayer application written in Unity used to visualize and interact with CAD models of satellites"
+      ],
+      "img": "/unity-cube.webp",
+      "id": "multiplayer-satellites",
+      "section": "aerospace"
     }
   ]
 }
