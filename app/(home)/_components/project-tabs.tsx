@@ -21,9 +21,9 @@ export function ProjectTabs({ onTabChanged, defaultValue }: ProjectTabProps) {
           <BookIcon />
           University
         </TabsTrigger>
-        <TabsTrigger value="aerospace">
+        <TabsTrigger disabled value="aerospace">
           <SatelliteIcon />
-          Aerospace
+          Aerospace (in development)
         </TabsTrigger>
         <TabsTrigger value="personal">
           <HouseIcon />

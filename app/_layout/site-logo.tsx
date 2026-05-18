@@ -7,14 +7,12 @@ export function SiteLogo() {
   return (
     <div className="flex flex-col items-center justify-center sm:items-end">
       <MotionDiv
-        initial={{ translateX: "-50vw" }}
+        initial={{ translateX: "-25vw" }}
         animate={{ translateX: "0vw" }}
         transition={{ translateX: { type: "spring", mass: 1.5, stiffness: 75 } }}
       >
         <Image unoptimized width={175} src={HatLogo} alt="A black hat with wings" className={`-my-6 sm:my-0`} />
       </MotionDiv>
-
-      <ConstructionBanner />
     </div>
   )
 }
