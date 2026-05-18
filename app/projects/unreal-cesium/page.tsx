@@ -55,9 +55,6 @@ export default function UnrealCesiumPage() {
         </div>
       </ProjectIntro>
 
-      {/* TODO: Add in a "what i'd do differently" */}
-      {/* TODO: Add in a what I learned / takeaways */}
-      {/* TODO: Add some of the UE features I used (DataAssets, Interfaces, etc.) */}
       <ProjectRoles>
         <ProjectRole>
           <ProjectRoleHeader>Solo Developer</ProjectRoleHeader>
@@ -68,13 +65,16 @@ export default function UnrealCesiumPage() {
               Created application lifecycle
               <Responsibilities>
                 <Responsibility>
-                  Design patterns used include abstract factory pattern, strategy pattern, command pattern, and template
-                  method pattern, among others.
+                  <span className="font-bold">Design patterns</span> used include abstract factory pattern, strategy
+                  pattern, command pattern, and template method pattern, among others.
                   <Responsibilities>
                     <Responsibility>Loaders to ingest data from different sources.</Responsibility>
                     <Responsibility>
                       Factories to create commands that spawned and initialized Actors of different types, depending on
                       the ingested data.
+                    </Responsibility>
+                    <Responsibility>
+                      Utilized Data Assets and UInterfaces to create an intuituve, extensible architecture.
                     </Responsibility>
                   </Responsibilities>
                 </Responsibility>
