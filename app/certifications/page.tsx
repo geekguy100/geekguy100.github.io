@@ -1,7 +1,7 @@
 import { ArticleWithIntro } from "@/components/section-with-intro"
 import ProductOwnerBadge from "./_images/product-owner-badge.png"
 import ScrumMasterBadge from "./_images/scrum-master-badge.png"
-import UnrealCertificate from "./_images/unreal-certificate.jpg"
+import CppCertificate from "./_images/unreal-certificate.jpg"
 import type { StaticImageData } from "next/image"
 import Image from "next/image"
 import Link from "next/link"
@@ -31,10 +31,10 @@ const certifications: CertificationData[] = [
     type: "badge",
   },
   {
-    caption: "Unreal Engine 5 C++ Developer Course",
-    image: UnrealCertificate,
+    caption: "The Complete C++ Developer Course",
+    image: CppCertificate,
     type: "certificate",
-    href: "https://www.udemy.com/course/unrealcourse/",
+    href: "https://www.udemy.com/course/the-complete-cpp-developer-course/",
   },
 ]
 
