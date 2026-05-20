@@ -57,24 +57,6 @@ export default function DisasterGolfPage() {
       />
       <ProjectRoles>
         <ProjectRole>
-          <ProjectRoleHeader>Creative Director</ProjectRoleHeader>
-          <Responsibilities>
-            <Responsibility>
-              Hosted sprint retrospectives to discuss the most recent sprint.
-              <Responsibilities>
-                <Responsibility>
-                  I made sure that the team knew these discussions were open for anyone to provide feedback.
-                </Responsibility>
-              </Responsibilities>
-            </Responsibility>
-            <Responsibility>Verified all work meets the discussed vision we had for the game.</Responsibility>
-            <Responsibility>
-              Managed discipline leads and sub-team leads to make sure the team is not only contributing to the
-              project's creative vision but learning along the way.
-            </Responsibility>
-          </Responsibilities>
-        </ProjectRole>
-        <ProjectRole>
           <ProjectRoleHeader>Lead Producer</ProjectRoleHeader>
           <Responsibilities>
             <Responsibility>Created and managed our ClickUp page.</Responsibility>
@@ -89,26 +71,6 @@ export default function DisasterGolfPage() {
                   feel like they are contributing to something amazing.
                 </Responsibility>
               </Responsibilities>
-            </Responsibility>
-          </Responsibilities>
-        </ProjectRole>
-        <ProjectRole>
-          <ProjectRoleHeader>Other Achievements</ProjectRoleHeader>
-          <Responsibilities>
-            <Responsibility>
-              Overhauled project management when work was not getting completed.
-              <Responsibilities>
-                <Responsibility>
-                  My efforts resulted in a{" "}
-                  <span className="font-bold">
-                    steady flow of work being produced, increased communication between sub-teams, and explicitly
-                    defined expectations for being a member of the project, a discipline lead, or a sub-team lead.
-                  </span>
-                </Responsibility>
-              </Responsibilities>
-            </Responsibility>
-            <Responsibility>
-              Created anonymous feedback form where the team can privately express concerns and considerations.
             </Responsibility>
           </Responsibilities>
         </ProjectRole>
