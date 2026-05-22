@@ -26,7 +26,7 @@ export default function RootLayout({
     >
       <body className="m-6">
         <TooltipProvider>
-          <ThemeProvider>
+          <ThemeProvider forcedTheme="dark">
             <SiteHeader />
             <main>{children}</main>
           </ThemeProvider>
