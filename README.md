@@ -1,21 +1,6 @@
-# Next.js template
+<div align="center">
+<img src="https://www.kylegrenier.net/_next/static/media/hat.9a383f9c.png" width=300 />
 
-This is a Next.js template with shadcn/ui.
-
-## Adding components
-
-To add components to your app, run the following command:
-
-```bash
-npx shadcn@latest add button
-```
-
-This will place the ui components in the `components` directory.
-
-## Using components
-
-To use the components in your app, import them as follows:
-
-```tsx
-import { Button } from "@/components/ui/button";
-```
+This project was created using Next.js, shadcn/ui, and TypeScript. I used [Motion](https://motion.dev/) for the animations.\
+[Check out the live website here!](https://www.kylegrenier.net)
+</div>
