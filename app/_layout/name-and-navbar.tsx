@@ -15,7 +15,7 @@ export function NameAndNavbar() {
     >
       <div>
         <motion.h1 variants={childFadeInVariants}>Kyle Grenier</motion.h1>
-        <motion.h4 variants={childFadeInVariants}>Immersive Technology and Game Developer</motion.h4>
+        <motion.h4 variants={childFadeInVariants}>Web and Video Game Developer</motion.h4>
       </div>
       <NavigationBar />
     </MotionDiv>
