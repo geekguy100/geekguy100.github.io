@@ -12,11 +12,14 @@ const routes = [
 export function NavigationBar() {
   return (
     <MotionNav variants={childFadeInVariants} className="mb-2 sm:m-0">
-      <ButtonGroup>
+      <ButtonGroup className="mb-1">
         {routes.map((t) => (
           <NavigationButton key={t.href} {...t} />
         ))}
       </ButtonGroup>
+      <NavigationButton className="w-full" newTab href="/resume.pdf">
+        Resume
+      </NavigationButton>
     </MotionNav>
   )
 }
