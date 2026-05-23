@@ -7,8 +7,7 @@ export default function AboutMe() {
   return (
     <ArticleWithIntro title="About Me" id="aboutme">
       <MotionParagraph variants={childSlideInVariants}>
-        Hey there! I'm Kyle Grenier, a graduate of Bradley University and an immersive technology developer for The
-        Aerospace Corporation based in South California.
+        Hey there! I'm Kyle Grenier, a full stack web and video game developer.
       </MotionParagraph>
       <MotionParagraph variants={childSlideInVariants}>
         Ever since I was young, I have loved technology in all aspects, from robotics and science fiction to computers
