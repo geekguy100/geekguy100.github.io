@@ -107,9 +107,19 @@ function GeneralPiece({ section }: { section: Section }) {
               >
                 cislunar modeling environment
               </Link>{" "}
-              by developing an Unreal Engine application to visualize satellites, ground stations, and landers using
-              data from both internally developed and external tools.
+              by developing an extensible Unreal Engine application to visualize satellites, ground stations, and
+              landers.
             </p>
+            <ul>
+              <li>
+                Loaded data from both internal and external tools, emphasizing the use of design patterns such as the
+                strategy pattern, command pattern, and the template method pattern.
+              </li>
+              <li>
+                Encouraged futher flexibility and rapid iteration through the use of DataAssets to quickly test
+                different values on-the-fly.
+              </li>
+            </ul>
           </div>
 
           <div>
@@ -128,7 +138,11 @@ function GeneralPiece({ section }: { section: Section }) {
                 Conducted thorough code reviews, mentoring interns and the team as a whole about best practices along
                 the way.
               </li>
-              <li>Developed using React, Typescript, and shadcn/ui.</li>
+              <li>Developed the frontend using React, Typescript, and shadcn/ui.</li>
+              <li>
+                Developed the database using PostgreSQL, using views and functions to support translating customer
+                schemas to fit our application's.
+              </li>
             </ul>
           </div>
 
