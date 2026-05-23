@@ -28,5 +28,5 @@ function DesktopSocialGrid({ children }: PropsWithChildren) {
 }
 
 function MobileSocialGrid({ children }: PropsWithChildren) {
-  return <ButtonGroup className="pb-2 sm:hidden sm:pb-0">{children}</ButtonGroup>
+  return <ButtonGroup className="gap-1 pb-2 sm:hidden sm:pb-0">{children}</ButtonGroup>
 }
