@@ -114,7 +114,10 @@
     },
     {
       "title": "Forest Foodies",
-      "descriptions": ["My team's submission to GMTK 2024 with the theme Built to Scale."],
+      "descriptions": [
+        "My team's submission to GMTK 2024 with the theme Built to Scale.",
+        "Score **#1801** in the style category out of over 7,500 entries."
+      ],
       "img": "/forest-foodies-gameplay.webp",
       "id": "forest-foodies",
       "section": "personal",
