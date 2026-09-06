@@ -131,6 +131,45 @@
       "img": "/long-hat.png",
       "id": "portfolio",
       "section": "personal"
+    },
+    {
+      "title": "Cislunar Space Visualization Tool",
+      "descriptions": [
+        "An Unreal Engine application created to visualize ground assets and orbits in cislunar space.",
+        "Contributed to the Aerospace Cislunar Modeling Environment (ACME)."
+      ],
+      "img": "/UE-Icon-2023-White.svg",
+      "id": "unreal-cesium",
+      "section": "aerospace"
+    },
+    {
+      "title": "Project Phantom",
+      "descriptions": [
+        "A set of Unity applications that support on-site \"explorers\" and off-site scientists to communicate through mixed reality.",
+        "The applications were tested by the project lead during a simulated space exploration mission to Devon Island."
+      ],
+      "img": "/unity-cube.webp",
+      "id": "project-phantom",
+      "section": "aerospace"
+    },
+    {
+      "title": "Roadmapping Tool",
+      "descriptions": [
+        "A fullstack web application allowing users to collaboratively create roadmaps.",
+        "Developed to streamline NASA engineers' roadmap development efforts."
+      ],
+      "img": "/gantt-chart.svg",
+      "id": "roadmapping-tool",
+      "section": "aerospace"
+    },
+    {
+      "title": "Multiplayer Satellite Viewer",
+      "descriptions": [
+        "A multiplayer application written in Unity used to visualize and interact with CAD models of satellites"
+      ],
+      "img": "/unity-cube.webp",
+      "id": "multiplayer-satellites",
+      "section": "aerospace"
     }
   ]
 }
