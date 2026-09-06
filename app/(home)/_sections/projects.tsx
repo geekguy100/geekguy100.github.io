@@ -39,13 +39,8 @@ function PersonalDescription() {
 
 function AerospaceDescription() {
   return (
-    <MotionDiv variants={childFadeInVariants}>
-      <p>Projects I worked on during my time at The Aerospace Corporation</p>
-      <div className="flex justify-center gap-2">
-        <span>-</span>
-        <p className="italic">Please note that due to the nature of the work conducted, information may be limited</p>
-        <span>-</span>
-      </div>
-    </MotionDiv>
+    <MotionParagraph variants={childFadeInVariants}>
+      Projects I worked on during my time at The Aerospace Corporation
+    </MotionParagraph>
   )
 }
