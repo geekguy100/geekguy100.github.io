@@ -3,8 +3,10 @@ import { ProjectIntro, ProjectTitle, ProjectDescription } from "../_components/p
 import { Project } from "../_components/project-wrapper"
 import { SectionTitle } from "@/components/section-title"
 
-import { MotionArticle } from "@/components/motion-primitives"
+import { MotionArticle, MotionParagraph } from "@/components/motion-primitives"
 import { ElectronOverlayCodeCarousel } from "./_components/electron-overlay-code-carousel"
+import { MotionPdfViewer } from "../_components/motion-pdf-viewer"
+import { childSlideInVariants } from "@/lib/animation"
 
 export const metadata = getProjectMetdata("electron-overlay")
 
@@ -44,6 +46,21 @@ export default function ElectronUiOverlay() {
       <MotionArticle>
         <SectionTitle>Code Snippets</SectionTitle>
         <ElectronOverlayCodeCarousel />
+      </MotionArticle>
+
+      <MotionArticle className="text-center">
+        <SectionTitle>More about the Project</SectionTitle>
+        <MotionParagraph variants={childSlideInVariants}>
+          I created a PowerPoint and presented my work to my colleagues at one of my division's coffee talks. Here it is
+          exported as a PDF with the speaker notes included.
+        </MotionParagraph>
+        <MotionPdfViewer
+          carouselProps={{ className: "mt-2" }}
+          showPageNumber
+          downloadable
+          fileName="electron-overlay-ppt-w-notes"
+          src="/electron-overlay-ppt-w-notes.pdf"
+        />
       </MotionArticle>
     </Project>
   )
