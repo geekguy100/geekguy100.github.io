@@ -1,10 +1,9 @@
-import type { LanguageFn } from "highlight.js"
-import { CodeBlock } from "./code-block"
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "./ui/carousel"
 import { cn } from "@/lib/utils"
+import { CodeBlock, type CodeBlockProps } from "./code-block"
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "./ui/carousel"
 
 export interface CodeCarouselProps {
-  snippets: { text: string; language: LanguageFn; className?: string }[]
+  snippets: ({ text: string } & Omit<CodeBlockProps, "children" | "variants">)[]
   className?: string
 }
 export function CodeCarousel({ className, snippets }: CodeCarouselProps) {
