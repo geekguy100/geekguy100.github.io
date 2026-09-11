@@ -1,0 +1,42 @@
+// Overlay Application
+// An example page I created. Custom, type-safe hooks are used to send and receive data to and 
+// from the Electron application, in turn handling them to the Unity application.
+
+"use client";
+
+import { Button } from "@/components/ui/button";
+import { useInvoker } from "@/hooks/use-invoker";
+import { useIpc } from "@/hooks/use-ipc";
+import { useState } from "react";
+
+export default function Page() {
+    const [healthValue] = useIpc("updateHealth", -1);
+    const [numCubes, setNumCubes] = useState(1);
+    const spawnCubes = useInvoker("spawnCubes");
+
+    return (
+        <div className="p-6 flex flex-col gap-4 text-sm leading-loose">
+            <p className="text-2xl self-center font-mono">Seconds elapsed is {healthValue.toFixed(2)}</p>
+            <div className="w-fit space-y-2 text-center">
+                <h4 className="text-2xl">Fun Stuff</h4>
+                <Button
+                    className="w-full"
+                    onClick={() => {
+                        if (numCubes < 0) {
+                            alert("Number cannot be < 0");
+                            return;
+                        }
+
+                        spawnCubes(numCubes);
+                    }}
+                >
+                    Spawn Cube
+                </Button>
+                <label htmlFor="input-num-cubes" className="mr-2">
+                    # of cubes to spawn
+                </label>
+                <input defaultValue={1} id="input-num-cubes" type="number" className="bg-primary interactive" onChange={(ev) => setNumCubes(ev.target.valueAsNumber)} />
+            </div>
+        </div>
+    );
+}

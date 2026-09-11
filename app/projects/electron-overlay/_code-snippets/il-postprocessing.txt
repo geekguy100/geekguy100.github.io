@@ -1,0 +1,213 @@
+// Unity Application
+// Code to handle IL postprocessing. The [ToElectron] attributes are targeted, and IL instructions are injected into the associated method bodies.
+
+using Mono.Cecil;
+using Mono.Cecil.Cil;
+using Mono.Collections.Generic;
+using System;
+using System.IO;
+using System.Linq;
+using Unity.CompilationPipeline.Common.ILPostProcessing;
+namespace ElectronUi.CodeGen
+{
+    public class ElectronUiPostProcessor : ILPostProcessor
+    {
+        private class MethodDefinitionWithTargetAttributes
+        {
+            public readonly MethodDefinition methodDefinition;
+            public readonly CustomAttribute toElectronAttribute;
+
+            public MethodDefinitionWithTargetAttributes(MethodDefinition methodDefinition, CustomAttribute toElectronAttribute)
+            {
+                this.methodDefinition = methodDefinition;
+                this.toElectronAttribute = toElectronAttribute;
+            }
+        }
+
+        private const string TARGET_ATTRIBUTE_FULLNAME = "ElectronUi.ToElectronAttribute";
+        private const string NETWORK_CLASS_NAME = "NamedSocketServer";
+        private const string NETWORK_SEND_METHOD_NAME = "SendMessage";
+        private const string PAYLOAD_TYPE_NAME = "InvokePayload";
+
+        public override ILPostProcessor GetInstance()
+        {
+            return this;
+        }
+
+        private static ILPostProcessResult GetDefaultReturnValue(ICompiledAssembly compiledAssembly)
+        {
+            return new(compiledAssembly.InMemoryAssembly);
+        }
+
+        public override ILPostProcessResult Process(ICompiledAssembly compiledAssembly)
+        {
+            // Setup assembly resolver
+            var resolver = new DefaultAssemblyResolver();
+            foreach (var reference in compiledAssembly.References)
+            {
+                var directoryName = Path.GetDirectoryName(reference);
+                if (resolver.GetSearchDirectories().Contains(directoryName))
+                    continue;
+
+                resolver.AddSearchDirectory(directoryName);
+            }
+
+            // ReaderParameters dictates how the assembly will be read.
+            var readerParameters = new ReaderParameters() { AssemblyResolver = resolver };
+
+            // We may not have debugging symbols loaded. If we do, make sure to add them to our reader paramters.
+            MemoryStream pdbStream = null;
+            bool hasPdb = compiledAssembly.InMemoryAssembly.PdbData != null && compiledAssembly.InMemoryAssembly.PdbData.Length > 0;
+            if (hasPdb)
+            {
+                pdbStream = new MemoryStream(compiledAssembly.InMemoryAssembly.PdbData);
+                readerParameters.ReadSymbols = true;
+                readerParameters.SymbolStream = pdbStream;
+                readerParameters.SymbolReaderProvider = new PortablePdbReaderProvider();
+            }
+
+            // Read the assembly.
+            var assemblyDefinition = AssemblyDefinition.ReadAssembly(new MemoryStream(compiledAssembly.InMemoryAssembly.PeData), readerParameters);
+            var mainModule = assemblyDefinition.MainModule;
+
+            if (!TryGetNetworkSendMethod(mainModule, out MethodDefinition networkSendMethod))
+            {
+                Logger.Log("Failed to find NamedSocketServer::SendMessage");
+                return new(compiledAssembly.InMemoryAssembly);
+            }
+
+            if (!TryGetTargetMethods(mainModule.Types, out var targetMethods))
+            {
+                Logger.Log("Failed to find any target methods");
+                return new(compiledAssembly.InMemoryAssembly);
+            }
+
+            foreach(var targetMethod in targetMethods)
+            {
+                _ = TryProcessMethod(targetMethod, networkSendMethod);
+            }
+
+
+            // Create output streams that we can write our updates to.
+            using var peOutputStream = new MemoryStream();
+            using var pdbOutputStream = new MemoryStream();
+
+            // WriterParameters dictates how our updates gets written to the assembly.
+            WriterParameters writerParameters = new();
+
+            // If we loaded debugging symbols, make sure to write those as well.
+            if (hasPdb)
+            {
+                writerParameters.SymbolWriterProvider = new PortablePdbWriterProvider();
+                writerParameters.SymbolStream = pdbOutputStream;
+                writerParameters.WriteSymbols = true;
+            }
+
+            // Write to the assembly.
+            assemblyDefinition.Write(peOutputStream, writerParameters);
+
+            pdbStream?.Dispose();
+            return new ILPostProcessResult(new InMemoryAssembly(peOutputStream.ToArray(), hasPdb ? pdbOutputStream.ToArray() : Array.Empty<byte>()));
+        }
+
+        /// <summary>
+        /// Returns true if a CustomAttribute with the provided full name exists on the target method definition.
+        /// </summary>
+        /// <param name="methodDefinition">The method definition to target.</param>
+        /// <param name="fullAttributeName">The full name of the CustomAttribute to find.</param>
+        /// <param name="customAttribute">The obtained CustomAttribute, or null if none could be found.</param>
+        /// <returns>Returns true if a CustomAttribute with the provided full name exists on the target method definition. False otherwise.</returns>
+        private static bool TryGetCustomAttribute(MethodDefinition methodDefinition, string fullAttributeName, out CustomAttribute customAttribute)
+        {
+            if (!methodDefinition.HasCustomAttributes)
+            {
+                customAttribute = null;
+                return false;
+            }
+
+            customAttribute = methodDefinition.CustomAttributes.FirstOrDefault(t => t.AttributeType.FullName == fullAttributeName);
+            return customAttribute != null;
+        }
+
+        private static bool TryGetTargetMethods(Collection<TypeDefinition> typeDefs, out Collection<MethodDefinitionWithTargetAttributes> targetMethods)
+        {
+            var methods = typeDefs.
+                SelectMany(static t => t.Methods).
+                Select(t =>
+                {
+                    if (!TryGetCustomAttribute(t, TARGET_ATTRIBUTE_FULLNAME, out var targetAttribute))
+                    {
+                        return null;
+                    }
+
+                    return new MethodDefinitionWithTargetAttributes(t, targetAttribute);
+                }).
+                Where(static t => t != null);
+
+            if (!methods.Any())
+            {
+                targetMethods = null;
+                return false;
+            }
+
+            targetMethods = new Collection<MethodDefinitionWithTargetAttributes>(methods.ToList());
+            return true;
+        }
+
+        private static bool TryGetNetworkSendMethod(ModuleDefinition module, out MethodDefinition methodDef)
+        {
+            var classes = module.Types.Where(static t => t.IsClass);
+            var networkSocketClass = classes.FirstOrDefault(static t => t.Name == NETWORK_CLASS_NAME);
+            if (networkSocketClass == null)
+            {
+                methodDef = null;
+                return false;
+            }
+
+            methodDef = networkSocketClass.Methods.FirstOrDefault(static t => t.Name == NETWORK_SEND_METHOD_NAME && t.Parameters.Count() == 2);
+            return methodDef != null;
+        }
+
+        private static bool TryProcessMethod(MethodDefinitionWithTargetAttributes target, MethodDefinition networkSendMethodDef)
+        {
+            var targetMethodDef = target.methodDefinition;
+            var toElectronAttribute = target.toElectronAttribute;
+
+            // Insert a call to the networkSendMethodDef before the last instruction.
+            try
+            {
+                var targetProcessor = targetMethodDef.Body.GetILProcessor();
+
+                // The return instruction
+                var lastInstruction = targetMethodDef.Body.Instructions.Last();
+
+                // Make a copy of our InvokePayload object and push it onto the evaluation stack just before the 'ret' call.
+                // We do this so it will be passed into the network send method.
+                var dupInstruction = targetProcessor.Create(OpCodes.Dup);
+                targetProcessor.InsertBefore(lastInstruction, dupInstruction);
+
+                // Push a 1 if we should throw or a 0 if we should not.
+                bool shouldThrowArg = (bool)toElectronAttribute.ConstructorArguments[0].Value;
+                var pushBoolInstruction = targetProcessor.Create(shouldThrowArg ? OpCodes.Ldc_I4_1 : OpCodes.Ldc_I4_0);
+                targetProcessor.InsertBefore(lastInstruction, pushBoolInstruction);
+
+                // Call the network send method. The values we pushed onto the evaluation stack will be placed into the argument list.
+                var callInstruction = targetProcessor.Create(OpCodes.Call, networkSendMethodDef);
+                targetProcessor.InsertBefore(lastInstruction, callInstruction);
+            }
+            catch (System.Exception ex)
+            {
+                Logger.Log("Exception: " + ex.Message);
+                return false;
+            }
+
+            return true;
+        }
+
+        public override bool WillProcess(ICompiledAssembly compiledAssembly)
+        {
+            // TODO: Will need to consider the fact that people may create their own assemblies.
+            return compiledAssembly.Name == "Assembly-CSharp";
+        }
+    }
+}

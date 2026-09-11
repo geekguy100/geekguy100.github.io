@@ -1,16 +1,16 @@
-import { ProjectDescription, ProjectIntro, ProjectTitle } from "../_components/project-intro"
 import { getProjectMetdata } from "@/lib/helpers"
-import {
-  ProjectRole,
-  ProjectRoleHeader,
-  ProjectRoleResponsibilities as Responsibilities,
-  ProjectRoleResponsibility as Responsibility,
-  ProjectRoles,
-} from "../_components/project-roles"
-import { Project } from "../_components/project-wrapper"
 import Link from "next/link"
 import { PlayProject } from "../_components/play-project"
 import { ProjectGameplay } from "../_components/project-gameplay"
+import { ProjectDescription, ProjectIntro, ProjectTitle } from "../_components/project-intro"
+import {
+  ProjectRole,
+  ProjectRoleHeader,
+  ProjectRoles,
+  ProjectRoleResponsibilities as Responsibilities,
+  ProjectRoleResponsibility as Responsibility,
+} from "../_components/project-roles"
+import { Project } from "../_components/project-wrapper"
 
 export const metadata = getProjectMetdata("portfolio")
 
@@ -39,12 +39,14 @@ export default function PortfolioPage() {
             title: "Early site development",
             mimeType: "image/png",
             caption: "Early site development",
+            contentType: "internal",
           },
           {
             src: "/portfolio-dev-2.png",
             title: "Final site development",
             mimeType: "image/png",
             caption: "Final site development",
+            contentType: "internal",
           },
         ]}
       />

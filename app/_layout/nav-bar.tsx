@@ -11,7 +11,7 @@ const routes = [
 
 export function NavigationBar() {
   return (
-    <MotionNav variants={childFadeInVariants} className="mb-2 sm:m-0">
+    <MotionNav variants={childFadeInVariants} className="mb-2 sm:m-0 print:hidden">
       <ButtonGroup className="mb-1">
         {routes.map((t) => (
           <NavigationButton key={t.href} {...t} />

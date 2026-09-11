@@ -37,6 +37,7 @@ export default function SundownGundownPage() {
             src: "/sundown-gundown.mp4",
             title: "Disaster Golf Gameplay Trailer",
             mimeType: "video/mp4",
+            contentType: "internal",
           },
         ]}
       />

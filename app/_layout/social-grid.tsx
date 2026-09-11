@@ -11,7 +11,7 @@ export function SocialGrid() {
       initial="hidden"
       animate="visible"
       transition={{ delayChildren: stagger(0.1) }}
-      className="flex justify-center sm:items-center sm:justify-normal"
+      className="flex justify-center sm:items-center sm:justify-normal print:hidden"
     >
       <DesktopSocialGrid>
         <SocialIcons />

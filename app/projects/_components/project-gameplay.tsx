@@ -1,6 +1,6 @@
 "use client"
 import { SectionTitle } from "@/components/section-title"
-import Image from "next/image"
+import Image, { type StaticImageData } from "next/image"
 import {
   Carousel,
   CarouselContent,
@@ -15,18 +15,22 @@ import { useEffect, useState } from "react"
 
 type ContentItem = { caption?: string } & (
   | {
+      contentType: "internal"
       src: string
       title: string
       mimeType: string
     }
-  | ExternalContentItem
+  | {
+      contentType: "external"
+      src: `http${string}`
+      title: string
+    }
+  | {
+      contentType: "static-image"
+      src: StaticImageData
+      title: string
+    }
 )
-
-type ExternalContentItem = {
-  src: `http${string}`
-  title: string
-  mimeType?: never
-}
 
 export type ProjectGameplayProps = { content: ContentItem[]; title?: string }
 export function ProjectGameplay({ content, title }: ProjectGameplayProps) {
@@ -51,19 +55,26 @@ export function ProjectGameplay({ content, title }: ProjectGameplayProps) {
       <motion.div className="mx-auto max-w-4xl max-lg:px-12" variants={childFadeInVariants}>
         <Carousel setApi={setApi}>
           <CarouselContent>
-            {content.map((t, i) => (
-              <CarouselItem key={i}>
-                <div className="aspect-video">
-                  {isUrl(t.src) && <EmbeddedGameplay {...t} />}
-                  {!isUrl(t.src) && (
-                    <div className="relative size-full">
-                      {t.mimeType!.includes("video") ? <VideoItem item={t} /> : <ImgItem item={t} />}
-                    </div>
-                  )}
-                </div>
-                {t.caption && <p className="text-center text-sm italic">{t.caption}</p>}
-              </CarouselItem>
-            ))}
+            {content.map((t, i) => {
+              return (
+                <CarouselItem key={i}>
+                  <div className="aspect-video">
+                    {t.contentType === "external" ? (
+                      <ExternalGameplay {...t} />
+                    ) : (
+                      <div className="relative size-full">
+                        {t.contentType === "internal" && t.mimeType!.includes("video") ? (
+                          <VideoItem item={t} />
+                        ) : (
+                          <ImgItem item={t} />
+                        )}
+                      </div>
+                    )}
+                  </div>
+                  {t.caption && <p className="text-center text-sm italic">{t.caption}</p>}
+                </CarouselItem>
+              )
+            })}
           </CarouselContent>
           {content.length > 1 && (
             <div className="max-sm:hidden">
@@ -82,11 +93,11 @@ export function ProjectGameplay({ content, title }: ProjectGameplayProps) {
   )
 }
 
-interface ItemProps {
-  item: ContentItem
+interface VideoProps {
+  item: ContentItem & { contentType: "internal" }
 }
 
-function VideoItem({ item }: ItemProps) {
+function VideoItem({ item }: VideoProps) {
   const { mimeType, title, src } = item
   return (
     <video className="mx-auto" controls title={title}>
@@ -96,12 +107,16 @@ function VideoItem({ item }: ItemProps) {
   )
 }
 
-function ImgItem({ item }: ItemProps) {
+interface ImageProps {
+  item: ContentItem & { contentType: "static-image" | "internal" }
+}
+
+function ImgItem({ item }: ImageProps) {
   const { title, src } = item
   return <Image className="mx-auto" src={src} title={title} fill alt="" />
 }
 
-function EmbeddedGameplay({ src, title }: ProjectGameplayProps["content"][number]) {
+function ExternalGameplay({ src, title }: ProjectGameplayProps["content"][number] & { contentType: "external" }) {
   return (
     <motion.iframe
       variants={childFadeInVariants}
@@ -112,8 +127,4 @@ function EmbeddedGameplay({ src, title }: ProjectGameplayProps["content"][number
       className="mx-auto size-full"
     />
   )
-}
-
-function isUrl(value: string): value is `http${string}` {
-  return value.startsWith("http")
 }

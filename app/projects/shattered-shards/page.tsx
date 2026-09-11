@@ -39,6 +39,7 @@ export default function ShatteredShards() {
             src: "/horror_gameplay.mp4",
             title: "Shattered Shards Gameplay",
             mimeType: "video/mp4",
+            contentType: "internal",
           },
         ]}
       />
