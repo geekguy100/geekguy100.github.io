@@ -92,6 +92,13 @@
       "section": "university"
     },
     {
+      "title": "Electron UI Overlay for Unity Applications",
+      "descriptions": ["An Electron application that serves as an overlayed user interface to a Unity application"],
+      "img": "/unity-cube.webp",
+      "id": "electron-overlay",
+      "section": "personal"
+    },
+    {
       "title": "Raycasting Engine",
       "descriptions": [
         "An in-progress game engine written in C using OpenGL and raycasting techniques from games such as Wolfenstein 3D."

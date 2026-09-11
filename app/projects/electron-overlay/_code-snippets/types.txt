@@ -1,0 +1,42 @@
+// Overlay Application
+// Types shared between the user interface and Electron applications.
+
+interface Window {
+    hooks: {
+        updateHealth: IPCEvent<[number]>;
+    };
+    invokers: {
+        spawnCubes: InvokerEvent<[number], boolean>;
+        unityDebugLog: InvokerEvent<[string]>;
+    };
+}
+
+type GenericFunction<TArgs extends unknown[] = unknown[], TReturnType extends unknown = void> = (...args: TArgs) => TReturnType;
+type IPCEvent<TArgs extends unknown[] = unknown[]> = (callback: GenericFunction<TArgs>) => void;
+type GenericPayload<TName extends string = string, TArgs extends unknown[] = []> = { eventName: TName; args: TArgs };
+
+type IPCHookName = readonly (keyof Window["hooks"]);
+type IPCHookArgs<TName extends IPCHookName> = Parameters<Parameters<Window["hooks"][TName]>["0"]>;
+type IPCHookPayload<TName extends IPCHookName = IPCHookName> = GenericPayload<TName, IPCHookArgs<TName>>;
+
+// TODO: Consider going fullscreen, too.
+type IPCWinProcCallbackHide = () => void;
+type IPCWinProcCallbackRestore = () => void;
+type IPCWinProcCallbackResize = (width: number, height: number) => void;
+type IPCWinProcCallbackMove = (x: number, y: number) => void;
+type IPCWinProcCallback = {
+    hide: IPCWinProcCallbackHide;
+    restore: IPCWinProcCallbackRestore;
+    resize: IPCWinProcCallbackResize;
+    move: IPCWinProcCallbackMove;
+};
+type IPCWinProcName = keyof IPCWinProcCallback;
+type IPCWinProcArgs<TName extends IPCWinProcName> = Parameters<IPCWinProcCallback[TName]>;
+type IPCWinProcPayload<TName extends IPCWinProcName = IPCWinProcName> = GenericPayload<TName, IPCWinProcArgs[TName]>;
+
+type InvokerEvent<TArgs extends unknown[] = unknown[], TReturnType extends unknown = void> = GenericFunction<TArgs, Promise<TReturnType>>;
+type InvokerName = readonly (keyof Window["invokers"]);
+type InvokerArgs<TName extends InvokerName> = Parameters<Window["invokers"][TName]>;
+type InvokerReturnType<TName extends InvokerName> = ReturnType<Window["invokers"][TName]>;
+
+type AsSuccessful<T> = { success: true; value: T } | { success: false; reason?: string };

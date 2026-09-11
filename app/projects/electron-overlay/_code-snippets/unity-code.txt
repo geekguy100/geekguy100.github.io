@@ -1,0 +1,61 @@
+// Unity Application
+// Driver class to experiment with sending and receiving data to and from the Electron application.
+
+using UnityEngine;
+
+namespace ElectronUi.Invoke
+{
+    public class ElectronInvoker : MonoBehaviour
+    {
+        private bool shouldSend;
+
+        [SerializeField] private GameObject cubePrefab;
+        [SerializeField] private Transform spawnPoint;
+
+        [ToElectron]
+        public InvokePayload InvokeTest(float value)
+        {
+            return new InvokePayload("updateHealth", value);
+        }
+
+        private void OnEnable()
+        {
+            NamedSocketServer.OnPayloadReceived += OnPayloadReceived;
+        }
+
+        private void OnDisable()
+        {
+            NamedSocketServer.OnPayloadReceived -= OnPayloadReceived;
+        }
+
+        private void OnPayloadReceived(InvokePayload payload)
+        {
+            if (payload.eventName != "spawnCubes")
+            {
+                Debug.LogWarning("No handler for event " + payload.eventName);
+                return;
+            }
+
+            if (payload.TryGetArgAt(0, out int amnt))
+            {
+                Debug.Log("Spawn cubes amnt is " + amnt);
+                for (int i = 0; i < amnt; i++)
+                {
+                    var clone = Instantiate(cubePrefab, spawnPoint);
+                    clone.transform.SetLocalPositionAndRotation(Random.insideUnitCircle * Random.Range(0, 5), Quaternion.identity);
+                }
+            }
+        }
+
+        private void Update()
+        {
+            if (!shouldSend || !NamedSocketServer.Initialized ) return;
+            InvokeTest(Time.time);
+        }
+
+        public void ToggleSend()
+        {
+            shouldSend = !shouldSend;
+        }
+    }
+}
