@@ -48,12 +48,14 @@ export default function RaycastEnginePage() {
             title: "Prototype of raycasting engine written in JavaScript",
             mimeType: "image/gif",
             caption: "Prototype of raycasting engine written in JavaScript",
+            contentType: "internal",
           },
           {
             src: "/c_raycasting_demo.gif",
             title: "In-progress showcase of minimap written in C",
             mimeType: "image/gif",
             caption: "In-progress showcase of minimap written in C",
+            contentType: "internal",
           },
         ]}
       />

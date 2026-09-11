@@ -79,6 +79,7 @@ export default function OutOfServicePage() {
               {
                 src: "https://www.youtube.com/embed/xTnpD2aEzd4?si=YW-rJ0xp11OhqxH4",
                 title: "Out of Service Playthrough",
+                contentType: "external",
               },
             ]}
           />

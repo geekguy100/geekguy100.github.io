@@ -37,6 +37,7 @@ export default function BallBarragePage() {
             src: "/ball-barrage.mp4",
             title: "Project: Ball Barrage Gameplay",
             mimeType: "video/mp4",
+            contentType: "internal",
           },
         ]}
       />

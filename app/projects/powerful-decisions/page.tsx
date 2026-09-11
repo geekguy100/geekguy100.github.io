@@ -32,6 +32,7 @@ export default function PowerfulDecisions() {
             src: "/powerful-decisions.mp4",
             title: "POWERful Decisions Gameplay",
             mimeType: "video/mp4",
+            contentType: "internal",
           },
         ]}
       />

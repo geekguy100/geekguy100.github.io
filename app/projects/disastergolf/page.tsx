@@ -52,6 +52,7 @@ export default function DisasterGolfPage() {
           {
             src: "https://www.youtube.com/embed/rs9bdJmgKEg?si=adlZ4V4I9EkkdqeP",
             title: "Disaster Golf Gameplay Trailer",
+            contentType: "external",
           },
         ]}
       />
